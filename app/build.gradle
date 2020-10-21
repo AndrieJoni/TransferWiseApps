@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'koin'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "parkee.parkee.transferwiseapps"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_SERVER_URL", '"https://api.themoviedb.org/3/"'
+        buildConfigField "String", "TRANSFERWISE_API_KEY", '"a35068e5335660fe0117dfa9f02011cc"'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation "androidx.core:core-ktx:$androidx_ktx_core_version"
+    implementation "com.google.android.material:material:$google_material_version"
+    implementation "androidx.appcompat:appcompat:$androidx_app_compat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraint_layout_version"
+    implementation "androidx.paging:paging-runtime:$androidx_paging_version"
+    implementation "androidx.cardview:cardview:$androidx_card_view_version"
+    implementation "androidx.recyclerview:recyclerview:$androidx_recycler_view_version"
+    implementation "androidx.multidex:multidex:$androidx_multidex_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidx_lifecycler_ktx_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycler_ktx_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycler_ktx_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycler_ktx_version"
+    implementation "androidx.room:room-runtime:$androidx_room_version"
+    implementation "androidx.room:room-ktx:$androidx_room_version"
+    kapt "androidx.room:room-compiler:$androidx_room_version"
+
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_version"
+
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
+    implementation "com.jakewharton.threetenabp:threetenabp:$threeten_abp_version"
+
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$test_espresso_core_version"
+
+}
