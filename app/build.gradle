@@ -16,8 +16,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BASE_SERVER_URL", '"https://api.themoviedb.org/3/"'
-        buildConfigField "String", "TRANSFERWISE_API_KEY", '"a35068e5335660fe0117dfa9f02011cc"'
+        buildConfigField "String", "BASE_SERVER_URL", '"https://api.sandbox.transferwise.tech"'
+        buildConfigField "String", "TRANSFERWISE_API_KEY", '"2149ffbf-affb-46ec-aef9-2138b51d2f7c"'
     }
 
     buildTypes {
