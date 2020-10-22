@@ -1,4 +1,4 @@
-package parkee.parkee.transferwiseapps.network
+package parkee.parkee.transferwiseapps.network.client
 
 import okhttp3.Interceptor
 import okhttp3.Request

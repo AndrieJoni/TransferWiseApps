@@ -1,6 +1,6 @@
 package parkee.parkee.transferwiseapps.repository
 
-import parkee.parkee.transferwiseapps.network.UserService
+import parkee.parkee.transferwiseapps.network.user.UserService
 
 class UserRepository(private val userService: UserService) {
 

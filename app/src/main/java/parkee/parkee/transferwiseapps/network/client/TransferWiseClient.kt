@@ -1,4 +1,4 @@
-package parkee.parkee.transferwiseapps.network
+package parkee.parkee.transferwiseapps.network.client
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,7 +24,7 @@ object TransferWiseClient {
             .build()
     }
 
-    fun getMovieDbServices(): Retrofit {
+    fun getTransferWiseServices(): Retrofit {
 
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

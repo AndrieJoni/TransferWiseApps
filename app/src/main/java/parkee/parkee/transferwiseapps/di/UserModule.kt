@@ -1,9 +1,9 @@
 package parkee.parkee.transferwiseapps.di
 
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import parkee.parkee.transferwiseapps.MainActivityViewModel
-import parkee.parkee.transferwiseapps.network.UserService
+import parkee.parkee.transferwiseapps.network.user.UserService
+import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesService
+import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
 import parkee.parkee.transferwiseapps.repository.UserRepository
 import retrofit2.Retrofit
 
@@ -15,5 +15,9 @@ val userModule = module {
         )
     }
 
-    viewModel { MainActivityViewModel(get()) }
+    factory {
+        UserProfilesRepository(
+            get<Retrofit>().create(UserProfilesService::class.java)
+        )
+    }
 }
