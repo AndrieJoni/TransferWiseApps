@@ -1,7 +1,8 @@
-import com.google.gson.annotations.SerializedName
-import parkee.parkee.transferwiseapps.network.recipient.FieldDto
+package parkee.parkee.transferwiseapps.network.recipient
 
-data class FormRequirmentsDto(
+import com.google.gson.annotations.SerializedName
+
+data class FormRequirementsDto(
     @SerializedName("fields")
     var fields: List<FieldDto> = listOf(),
     @SerializedName("title")

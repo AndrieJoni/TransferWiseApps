@@ -1,19 +1,24 @@
 package parkee.parkee.transferwiseapps.ui.recipients
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.dialog_add_recipients.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import parkee.parkee.transferwiseapps.R
 import parkee.parkee.transferwiseapps.ui.CurrencyModel
+import parkee.parkee.transferwiseapps.ui.RecipientBankDetailsModel
 
 class AddRecipientDialog : DialogFragment() {
 
     private val recipientsViewModel: RecipientsViewModel by sharedViewModel()
+
+    private val dynamicFieldAdapter = DynamicFieldAdapter(listOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +49,58 @@ class AddRecipientDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
+        initListener()
         initObserver()
         recipientsViewModel.getAvailableCurrency()
+    }
+
+    private fun initView() {
+        setSpinnerRecipientType()
+    }
+
+    private fun initListener() {
+
+        spinnerCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                recipientsViewModel.currencySelected(
+                    parent?.getItemAtPosition(position) as CurrencyModel
+                )
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+
+        spinnerRecipientsBankDetails.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    recipientsViewModel.recipientBankDetailsSelected(
+                        parent?.getItemAtPosition(position) as RecipientBankDetailsModel
+                    )
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+            }
+
+        btnAddRecipients.setOnClickListener {
+            for (data in dynamicFieldAdapter.data) {
+                Log.d("alohaaaa", data.selectedValues)
+            }
+        }
     }
 
     private fun setSpinnerCurrency(data: List<CurrencyModel>) {
@@ -62,10 +117,50 @@ class AddRecipientDialog : DialogFragment() {
         spinnerCurrency.adapter = currencyAdapter
     }
 
+    private fun setSpinnerRecipientBankDetails(data: List<RecipientBankDetailsModel>) {
+
+        val recipientsBankDetails =
+
+            context?.let { it1 ->
+                ArrayAdapter(
+                    it1,
+                    R.layout.support_simple_spinner_dropdown_item,
+                    data
+                )
+            }
+
+        spinnerRecipientsBankDetails.adapter = recipientsBankDetails
+    }
+
+    private fun setSpinnerRecipientType() {
+
+        val recipientTypes =
+
+            context?.let { it1 ->
+                ArrayAdapter(
+                    it1,
+                    R.layout.support_simple_spinner_dropdown_item,
+                    arrayListOf("Private", "Business")
+                )
+            }
+
+        spinnerRecipientType.adapter = recipientTypes
+    }
+
     private fun initObserver() {
 
-        recipientsViewModel.setCurrencyAvailableEvent.observe(this, {
+        recipientsViewModel.setCurrencyAvailableEvent.observe(viewLifecycleOwner, {
             setSpinnerCurrency(it)
+        })
+
+        recipientsViewModel.setRecipientBankDetailsEvent.observe(viewLifecycleOwner, {
+            setSpinnerRecipientBankDetails(it)
+        })
+
+        recipientsViewModel.showFieldRequirementsEvent.observe(viewLifecycleOwner, {
+
+            dynamicFieldAdapter.data = it
+            rvAddRecipientField.adapter = dynamicFieldAdapter
         })
     }
 }

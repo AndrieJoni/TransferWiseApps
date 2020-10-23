@@ -26,5 +26,5 @@ data class GroupDto(
     @SerializedName("validationRegexp")
     var validationRegexp: Any = Any(),
     @SerializedName("valuesAllowed")
-    var valuesAllowed: List<ValuesAllowedDto> = listOf()
+    var valuesAllowed: List<ValuesAllowedDto>? = listOf()
 )
