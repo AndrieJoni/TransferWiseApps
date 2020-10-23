@@ -8,7 +8,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import parkee.parkee.transferwiseapps.domain.mapToListAccountBalanceModel
 import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
-import parkee.parkee.transferwiseapps.network.user.UserDto
 import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
 import parkee.parkee.transferwiseapps.repository.BorderlessAccountsRepository
 import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
@@ -33,39 +32,25 @@ class HomeViewModel(
 
             try {
 
-                var userDto: UserDto? = null
+                var userProfilesPersonalDto : List<UserProfilesPersonalDto> = listOf()
 
                 withContext(Dispatchers.IO) {
-                    userDto = userRepository.getCurrentUser()
+                    userProfilesPersonalDto = userProfilesRepository.getUserProfiles()
                 }
 
-                if (userDto != null) {
-
-                    var userProfilesPersonalDto: UserProfilesPersonalDto? = null
-
-                    withContext(Dispatchers.IO) {
-                        userProfilesPersonalDto = userProfilesRepository.getUserProfiles(
-                            mapOf(
-                                "type" to "personal",
-                                "details" to mapOf(
-                                    "firstName" to userDto!!.userDetailsDto.firstName,
-                                    "lastName" to userDto!!.userDetailsDto.lastName,
-                                    "dateOfBirth" to userDto!!.userDetailsDto.dateOfBirth,
-                                    "phoneNumber" to userDto!!.userDetailsDto.phoneNumber
-                                )
-                            )
-                        )
-                    }
+                if (!userProfilesPersonalDto.isNullOrEmpty()) {
 
                     var accountBalanceDto: List<AccountBalanceDto>? = listOf()
 
                     withContext(Dispatchers.IO) {
                         accountBalanceDto =
-                            borderlessAccountsRepository.getAccountBalance(userProfilesPersonalDto?.id.toString())
+                            borderlessAccountsRepository
+                                .getAccountBalance(userProfilesPersonalDto[0].id.toString())
                     }
 
                     showAccountBalanceEvent.value =
                         accountBalanceDto?.get(0)?.balanceDtos?.mapToListAccountBalanceModel()
+
                 }
 
             } catch (e: Exception) {

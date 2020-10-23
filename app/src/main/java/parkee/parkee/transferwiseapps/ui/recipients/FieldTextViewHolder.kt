@@ -10,7 +10,7 @@ class FieldTextViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun renderView(data: FieldRequirementsModel) {
 
-        itemView.textInputEditTextCustom.hint = data.fieldName
+        itemView.textInputLayoutCustom.hint = data.fieldName
 
         itemView.textInputEditTextCustom.addTextChangedListener {
             data.selectedValues = it.toString()

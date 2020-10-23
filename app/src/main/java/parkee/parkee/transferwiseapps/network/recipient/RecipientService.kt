@@ -13,18 +13,18 @@ interface RecipientService {
     ): List<FormRequirementsDto>
 
     @GET("/v1/validators/sort-code")
-    suspend fun validateSortCode(@Query("source") sortCode: String): ValidationRequirementsDto
+    suspend fun validateSortCode(@Query("sortCode") sortCode: String): ValidationRequirementsDto
 
     @GET("/v1/validators/sort-code-account-number")
-    suspend fun validateSortCodeAccountNumber(@Query("source") sortCodeAccountNumber: String): ValidationRequirementsDto
+    suspend fun validateSortCodeAccountNumber(@Query("accountNumber") accountNumber: String): ValidationRequirementsDto
 
     @GET("/v1/validators/iban")
     suspend fun validateIban(@Query("iban") iban: String): ValidationRequirementsDto
 
     @GET("/v1/validators/bic")
-    suspend fun validateIbanBic(
-        @Query("iban") iban: String,
-        @Query("bic") bic: String
+    suspend fun validateIbanAndBic(
+        @Query("bic") bic: String,
+        @Query("iban") iban: String
     ): ValidationRequirementsDto
 
     @GET("/v1/validators/abartn")
@@ -46,7 +46,7 @@ interface RecipientService {
     suspend fun validateAustralianAccountNumber(@Query("accountNumber") accountNumber: String): ValidationRequirementsDto
 
     @GET("/v1/validators/canadian-institution-number")
-    suspend fun validateCanadianInstituionName(@Query("institutionNumber") instituionNumber: String): ValidationRequirementsDto
+    suspend fun validateCanadianInstituionNumber(@Query("institutionNumber") instituionNumber: String): ValidationRequirementsDto
 
     @GET("/v1/validators/canadian-transit-number")
     suspend fun validateCanadianTransitNumber(

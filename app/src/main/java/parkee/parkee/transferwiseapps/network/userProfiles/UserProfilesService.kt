@@ -1,11 +1,9 @@
 package parkee.parkee.transferwiseapps.network.userProfiles
 
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.GET
 
-@JvmSuppressWildcards
 interface UserProfilesService {
 
-    @POST("/v1/profiles")
-    suspend fun getUserProfiles(@Body param: Map<String, Any>): UserProfilesPersonalDto
+    @GET("/v1/profiles")
+    suspend fun getUserProfiles(): List<UserProfilesPersonalDto>
 }

@@ -1,7 +1,6 @@
 package parkee.parkee.transferwiseapps.ui.recipients
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -97,9 +96,10 @@ class AddRecipientDialog : DialogFragment() {
             }
 
         btnAddRecipients.setOnClickListener {
-            for (data in dynamicFieldAdapter.data) {
-                Log.d("alohaaaa", data.selectedValues)
-            }
+            recipientsViewModel.addRecipient(
+                spinnerCurrency.selectedItem as CurrencyModel,
+                dynamicFieldAdapter.data
+            )
         }
     }
 

@@ -14,7 +14,7 @@ fun Collection<FieldDto>.mapToFieldRequirementsModel(): List<FieldRequirementsMo
         if (it.group[0].valuesAllowed != null) {
 
             FieldRequirementsModel(
-                it.name,
+                it.group[0].name,
                 it.group[0].type,
                 it.group[0].valuesAllowed?.mapToFieldSelectValuesRequirementsModel(),
                 ""
@@ -23,7 +23,7 @@ fun Collection<FieldDto>.mapToFieldRequirementsModel(): List<FieldRequirementsMo
         } else {
 
             FieldRequirementsModel(
-                it.name,
+                it.group[0].name,
                 it.group[0].type,
                 listOf(),
                 ""
