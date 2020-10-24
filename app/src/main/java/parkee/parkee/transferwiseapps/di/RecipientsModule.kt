@@ -16,6 +16,6 @@ val recipientsModules = module {
     }
 
     viewModel {
-        RecipientsViewModel(get(), get())
+        RecipientsViewModel(get(), get(),get())
     }
 }

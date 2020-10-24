@@ -5,11 +5,15 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import parkee.parkee.transferwiseapps.domain.mapToListCurrencyModel
 import parkee.parkee.transferwiseapps.domain.mapToRecipientBankDetailsModel
+import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
 import parkee.parkee.transferwiseapps.network.borderlessAccount.CurrencyDto
+import parkee.parkee.transferwiseapps.network.recipient.CreateRecipietResponseDto
 import parkee.parkee.transferwiseapps.network.recipient.FormRequirementsDto
 import parkee.parkee.transferwiseapps.network.recipient.ValidationRequirementsDto
+import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
 import parkee.parkee.transferwiseapps.repository.BorderlessAccountsRepository
 import parkee.parkee.transferwiseapps.repository.RecipientRepository
+import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
 import parkee.parkee.transferwiseapps.ui.CurrencyModel
 import parkee.parkee.transferwiseapps.ui.FieldRequirementsModel
 import parkee.parkee.transferwiseapps.ui.RecipientBankDetailsModel
@@ -17,7 +21,8 @@ import parkee.parkee.transferwiseapps.utils.SingleLiveEvent
 
 class RecipientsViewModel(
     private val borderlessAccountsRepository: BorderlessAccountsRepository,
-    private val recipientRepository: RecipientRepository
+    private val recipientRepository: RecipientRepository,
+    private val userProfilesRepository: UserProfilesRepository
 ) : ViewModel() {
 
     var setCurrencyAvailableEvent = SingleLiveEvent<List<CurrencyModel>>()
@@ -79,105 +84,156 @@ class RecipientsViewModel(
         showFieldRequirementsEvent.value = data.fields.subList(1, data.fields.size)
     }
 
-    fun addRecipient(data: CurrencyModel, field: List<FieldRequirementsModel>) {
+    fun addRecipient(
+        firstName: String,
+        lastName: String,
+        legalType: String,
+        data: CurrencyModel,
+        recipientBankDetailsModel: RecipientBankDetailsModel,
+        field: List<FieldRequirementsModel>
+    ) {
 
         viewModelScope.launch {
+
+            var isValid = false
 
             try {
 
                 when (data.currencyName) {
 
                     "GBP" -> {
-                        if (checkGbpValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkGbpValidation(field[0].selectedValues, field[1].selectedValues)
                     }
 
                     "BGN", "CHF", "DKK", "EUR", "GEL", "NOK", "PKR", "RON" -> {
-                        if (checkIbanAndBicValidation(
-                                field[0].selectedValues,
-                                field[1].selectedValues
-                            )
-                        ) {
-
-                        }
+                        isValid = checkIbanAndBicValidation(
+                            field[0].selectedValues,
+                            field[1].selectedValues
+                        )
                     }
 
                     "USD" -> {
-                        if (checkUsdValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkUsdValidation(field[0].selectedValues, field[1].selectedValues)
                     }
 
                     "INR" -> {
-                        if (checkIrnValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkIrnValidation(field[0].selectedValues, field[1].selectedValues)
                     }
 
                     "AUD" -> {
-                        if (checkAudValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkAudValidation(field[0].selectedValues, field[1].selectedValues)
                     }
 
                     "CAD" -> {
-                        if (checkCadValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkCadValidation(field[0].selectedValues, field[1].selectedValues)
                     }
 
                     "SEK" -> {
-                        if (checkSekValidation(field[0].selectedValues)) {
-
-                        }
+                        isValid = checkSekValidation(field[0].selectedValues)
                     }
 
                     "HUF" -> {
-                        if (checkHufValidation(field[0].selectedValues)) {
-
-                        }
+                        isValid = checkHufValidation(field[0].selectedValues)
                     }
 
                     "PLN" -> {
-                        if (checkPlnValidation(field[0].selectedValues)) {
-
-                        }
+                        isValid = checkPlnValidation(field[0].selectedValues)
                     }
 
                     "UAH" -> {
-                        if (checkUahValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkUahValidation(field[0].selectedValues, field[1].selectedValues)
                     }
 
                     "NZD" -> {
-                        if (checkNzdValidation(field[0].selectedValues)) {
-
-                        }
+                        isValid = checkNzdValidation(field[0].selectedValues)
                     }
 
                     "AED" -> {
-                        if (checkAedValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkAedValidation(field[0].selectedValues, field[1].selectedValues)
                     }
 
                     "CNY" -> {
-                        if (checkCnyValidation(field[0].selectedValues)) {
-
-                        }
+                        isValid = checkCnyValidation(field[0].selectedValues)
                     }
 
                     "THB" -> {
-                        if (checkThbValidation(field[0].selectedValues, field[1].selectedValues)) {
-
-                        }
+                        isValid =
+                            checkThbValidation(field[0].selectedValues, field[1].selectedValues)
                     }
+                }
+
+                if (isValid) {
+                    createRecipient(
+                        firstName,
+                        lastName,
+                        legalType,
+                        data,
+                        recipientBankDetailsModel,
+                        field
+                    )
                 }
 
             } catch (e: Exception) {
                 e.printStackTrace()
+            }
+        }
+    }
+
+    private suspend fun createRecipient(
+        firstName: String,
+        lastName: String,
+        legalType: String, data: CurrencyModel,
+        recipientBankDetailsModel: RecipientBankDetailsModel,
+        field: List<FieldRequirementsModel>
+    ) {
+
+        var userProfilesPersonalDto: List<UserProfilesPersonalDto> = listOf()
+
+        withContext(Dispatchers.IO) {
+            userProfilesPersonalDto = userProfilesRepository.getUserProfiles()
+        }
+
+        if (!userProfilesPersonalDto.isNullOrEmpty()) {
+
+            var accountBalanceDto: List<AccountBalanceDto>? = listOf()
+
+            withContext(Dispatchers.IO) {
+                accountBalanceDto =
+                    borderlessAccountsRepository
+                        .getAccountBalance(userProfilesPersonalDto[0].id.toString())
+            }
+
+            var createRecipientResponseDto: CreateRecipietResponseDto? = null
+
+            val paramater = mutableMapOf<String, Any>()
+
+            paramater["currency"] = data.currencyName
+            paramater["type"] = recipientBankDetailsModel.fieldsType
+            paramater["profile"] = accountBalanceDto?.get(0)?.profileId.toString()
+            paramater["accountHolderName"] = String.format("%s %s", firstName, lastName)
+
+            val paramaterDetails = mutableMapOf<String, String>()
+
+            paramaterDetails["legalType"] = legalType
+            for (details in field) {
+                paramaterDetails[details.fieldKey] = details.selectedValues
+            }
+
+            paramater["details"] = paramaterDetails
+
+            withContext(Dispatchers.IO) {
+                createRecipientResponseDto = recipientRepository.createRecipient(paramater)
+            }
+
+            if (createRecipientResponseDto != null) {
+
             }
         }
     }

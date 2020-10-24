@@ -15,6 +15,7 @@ fun Collection<FieldDto>.mapToFieldRequirementsModel(): List<FieldRequirementsMo
 
             FieldRequirementsModel(
                 it.group[0].name,
+                it.group[0].key,
                 it.group[0].type,
                 it.group[0].valuesAllowed?.mapToFieldSelectValuesRequirementsModel(),
                 ""
@@ -24,6 +25,7 @@ fun Collection<FieldDto>.mapToFieldRequirementsModel(): List<FieldRequirementsMo
 
             FieldRequirementsModel(
                 it.group[0].name,
+                it.group[0].key,
                 it.group[0].type,
                 listOf(),
                 ""
@@ -47,7 +49,8 @@ fun Collection<FormRequirementsDto>.mapToRecipientBankDetailsModel(): List<Recip
     return map {
         RecipientBankDetailsModel(
             it.title,
-            it.fields.mapToFieldRequirementsModel()
+            it.fields.mapToFieldRequirementsModel(),
+            it.type
         )
     }
 }

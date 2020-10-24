@@ -1,8 +1,11 @@
 package parkee.parkee.transferwiseapps.network.recipient
 
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
+@JvmSuppressWildcards
 interface RecipientService {
 
     @GET("/v1/account-requirements")
@@ -11,6 +14,11 @@ interface RecipientService {
         @Query("target") target: String,
         @Query("sourceAmount") amount: Int = 1000,
     ): List<FormRequirementsDto>
+
+    @POST("v1/accounts")
+    suspend fun createRecipient(
+        @Body parameter: Map<String, Any>
+    ): CreateRecipietResponseDto
 
     @GET("/v1/validators/sort-code")
     suspend fun validateSortCode(@Query("sortCode") sortCode: String): ValidationRequirementsDto

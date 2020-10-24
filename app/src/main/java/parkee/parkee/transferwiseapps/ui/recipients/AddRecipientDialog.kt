@@ -97,7 +97,11 @@ class AddRecipientDialog : DialogFragment() {
 
         btnAddRecipients.setOnClickListener {
             recipientsViewModel.addRecipient(
+                textInputEditTextFirstName.text.toString(),
+                textInputEditTextLastName.text.toString(),
+                spinnerRecipientType.selectedItem as String,
                 spinnerCurrency.selectedItem as CurrencyModel,
+                spinnerRecipientsBankDetails.selectedItem as RecipientBankDetailsModel,
                 dynamicFieldAdapter.data
             )
         }
@@ -140,7 +144,7 @@ class AddRecipientDialog : DialogFragment() {
                 ArrayAdapter(
                     it1,
                     R.layout.support_simple_spinner_dropdown_item,
-                    arrayListOf("Private", "Business")
+                    arrayListOf("PRIVATE", "BUSINESS")
                 )
             }
 
