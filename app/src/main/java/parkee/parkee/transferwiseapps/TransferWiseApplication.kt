@@ -17,7 +17,10 @@ class TransferWiseApplication : MultiDexApplication() {
             ///CoreModule
             modules(networkModule)
 
-            modules(userModule, borderlessAccountsModule, homeModule, recipientsModules)
+            modules(
+                userModule, borderlessAccountsModule, quoteModule, homeModule, recipientsModules,
+                transferMoneyModule
+            )
         }
     }
 }

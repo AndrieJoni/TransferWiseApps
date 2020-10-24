@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="International" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Same Currency" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:weightSum="1">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:hint="You Send">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextSourceAmount"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:layout_height="62dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:hint="Currency">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextSourceCurrency"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_black"
+                android:focusable="false"
+                android:longClickable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewFeeTransfer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="16sp"
+        tools:text="Fee : 20.000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:weightSum="1">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:hint="Recipient Gets">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextTargetAmount"
+                android:layout_width="match_parent"
+                android:longClickable="false"
+                android:focusable="false"
+                android:layout_height="62dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:hint="Currency">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextTargetCurrency"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_black"
+                android:focusable="false"
+                android:longClickable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnContinueSendMoney"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_margin="16dp"
+        android:text="Continue" />
+
+</LinearLayout>

@@ -3,10 +3,8 @@ package parkee.parkee.transferwiseapps.ui.recipients
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
-import parkee.parkee.transferwiseapps.domain.mapToListCurrencyModel
 import parkee.parkee.transferwiseapps.domain.mapToRecipientBankDetailsModel
 import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
-import parkee.parkee.transferwiseapps.network.borderlessAccount.CurrencyDto
 import parkee.parkee.transferwiseapps.network.recipient.CreateRecipietResponseDto
 import parkee.parkee.transferwiseapps.network.recipient.FormRequirementsDto
 import parkee.parkee.transferwiseapps.network.recipient.ValidationRequirementsDto
@@ -25,31 +23,10 @@ class RecipientsViewModel(
     private val userProfilesRepository: UserProfilesRepository
 ) : ViewModel() {
 
-    var setCurrencyAvailableEvent = SingleLiveEvent<List<CurrencyModel>>()
     var setRecipientBankDetailsEvent = SingleLiveEvent<List<RecipientBankDetailsModel>>()
     var showFieldRequirementsEvent = SingleLiveEvent<List<FieldRequirementsModel>>()
 
-    fun getAvailableCurrency() {
-
-        viewModelScope.launch {
-
-            try {
-
-                var currencyDto: List<CurrencyDto>? = null
-
-                withContext(Dispatchers.IO) {
-                    currencyDto = borderlessAccountsRepository.getAvailableCurrency()
-                }
-
-                if (currencyDto != null) {
-                    setCurrencyAvailableEvent.value = currencyDto!!.mapToListCurrencyModel()
-                }
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
+    var currentCurrencySelected: CurrencyModel? = null
 
     private fun getFormRequirements(currency: String) {
 
@@ -88,7 +65,6 @@ class RecipientsViewModel(
         firstName: String,
         lastName: String,
         legalType: String,
-        data: CurrencyModel,
         recipientBankDetailsModel: RecipientBankDetailsModel,
         field: List<FieldRequirementsModel>
     ) {
@@ -99,7 +75,7 @@ class RecipientsViewModel(
 
             try {
 
-                when (data.currencyName) {
+                when (currentCurrencySelected?.currencyName) {
 
                     "GBP" -> {
                         isValid =
@@ -174,7 +150,6 @@ class RecipientsViewModel(
                         firstName,
                         lastName,
                         legalType,
-                        data,
                         recipientBankDetailsModel,
                         field
                     )
@@ -189,7 +164,7 @@ class RecipientsViewModel(
     private suspend fun createRecipient(
         firstName: String,
         lastName: String,
-        legalType: String, data: CurrencyModel,
+        legalType: String,
         recipientBankDetailsModel: RecipientBankDetailsModel,
         field: List<FieldRequirementsModel>
     ) {
@@ -214,7 +189,7 @@ class RecipientsViewModel(
 
             val paramater = mutableMapOf<String, Any>()
 
-            paramater["currency"] = data.currencyName
+            paramater["currency"] = currentCurrencySelected?.currencyName.toString()
             paramater["type"] = recipientBankDetailsModel.fieldsType
             paramater["profile"] = accountBalanceDto?.get(0)?.profileId.toString()
             paramater["accountHolderName"] = String.format("%s %s", firstName, lastName)
