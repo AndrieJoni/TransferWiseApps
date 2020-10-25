@@ -39,6 +39,7 @@
                 android:text="You send" />
 
             <TextView
+                android:id="@+id/textViewYouSendValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -64,6 +65,7 @@
                 android:text="Total fees (included)" />
 
             <TextView
+                android:id="@+id/textViewTotalFeeValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -88,6 +90,7 @@
                 android:text="Amount we'll convert" />
 
             <TextView
+                android:id="@+id/textViewMoneyConvertValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -112,6 +115,7 @@
                 android:text="Guarantee Rate" />
 
             <TextView
+                android:id="@+id/textViewGuaranteeRateValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -133,9 +137,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                tools:text="Recipient get" />
+                android:text="Recipient get" />
 
             <TextView
+                android:id="@+id/textViewRecipientGetValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -160,6 +165,7 @@
                 android:text="Should Arrive" />
 
             <TextView
+                android:id="@+id/textViewShouldArriveValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -188,9 +194,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                tools:text="Name" />
+                android:text="Name" />
 
             <TextView
+                android:id="@+id/textViewRecipientNameValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -200,30 +207,8 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:weightSum="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="Email" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end|center"
-                tools:text="20.000" />
-
-        </LinearLayout>
-
-
         <Button
+            android:id="@+id/btnTransfer"
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:layout_margin="16dp"

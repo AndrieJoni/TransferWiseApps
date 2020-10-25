@@ -14,6 +14,7 @@ class TransferMoneyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transfer_money)
         initView()
+        initObserver()
     }
 
     private fun initView() {
@@ -28,5 +29,11 @@ class TransferMoneyActivity : AppCompatActivity() {
         viewPagerTransferMoney.offscreenPageLimit = 4
         viewPagerTransferMoney.isUserInputEnabled = true
         viewPagerTransferMoney.adapter = transferMoneyPagerAdapter
+    }
+
+    private fun initObserver() {
+        transferMoneyViewModel.goToPageEvent.observe(this, {
+            viewPagerTransferMoney.currentItem = it
+        })
     }
 }

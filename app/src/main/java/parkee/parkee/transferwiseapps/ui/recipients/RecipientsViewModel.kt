@@ -1,11 +1,13 @@
 package parkee.parkee.transferwiseapps.ui.recipients
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import parkee.parkee.transferwiseapps.domain.mapToRecipientBankDetailsModel
+import parkee.parkee.transferwiseapps.domain.mapToRecipientModel
 import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
-import parkee.parkee.transferwiseapps.network.recipient.CreateRecipietResponseDto
+import parkee.parkee.transferwiseapps.network.recipient.RecipientDto
 import parkee.parkee.transferwiseapps.network.recipient.FormRequirementsDto
 import parkee.parkee.transferwiseapps.network.recipient.ValidationRequirementsDto
 import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
@@ -15,6 +17,7 @@ import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
 import parkee.parkee.transferwiseapps.ui.CurrencyModel
 import parkee.parkee.transferwiseapps.ui.FieldRequirementsModel
 import parkee.parkee.transferwiseapps.ui.RecipientBankDetailsModel
+import parkee.parkee.transferwiseapps.ui.RecipientModel
 import parkee.parkee.transferwiseapps.utils.SingleLiveEvent
 
 class RecipientsViewModel(
@@ -27,6 +30,8 @@ class RecipientsViewModel(
     var showFieldRequirementsEvent = SingleLiveEvent<List<FieldRequirementsModel>>()
 
     var currentCurrencySelected: CurrencyModel? = null
+
+    var setRecipientList = MutableLiveData<List<RecipientModel>>()
 
     private fun getFormRequirements(currency: String) {
 
@@ -185,7 +190,7 @@ class RecipientsViewModel(
                         .getAccountBalance(userProfilesPersonalDto[0].id.toString())
             }
 
-            var createRecipientResponseDto: CreateRecipietResponseDto? = null
+            var recipientDto: RecipientDto? = null
 
             val paramater = mutableMapOf<String, Any>()
 
@@ -204,10 +209,10 @@ class RecipientsViewModel(
             paramater["details"] = paramaterDetails
 
             withContext(Dispatchers.IO) {
-                createRecipientResponseDto = recipientRepository.createRecipient(paramater)
+                recipientDto = recipientRepository.createRecipient(paramater)
             }
 
-            if (createRecipientResponseDto != null) {
+            if (recipientDto != null) {
 
             }
         }
@@ -534,5 +539,27 @@ class RecipientsViewModel(
         }
 
         return isAccountNumberValid
+    }
+
+    fun getAllRecipient() {
+
+        viewModelScope.launch {
+
+            try {
+
+                var recipientData: List<RecipientDto>? = null
+
+                withContext(Dispatchers.IO) {
+                    recipientData = recipientRepository.getAllRecipient()
+                }
+
+                if (recipientData != null) {
+                    setRecipientList.value = recipientData?.mapToRecipientModel()
+                }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 }

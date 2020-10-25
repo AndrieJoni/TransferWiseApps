@@ -73,5 +73,9 @@ class ChooseAndConvertCurrencyFragment : Fragment() {
                 textInputEditTextTargetCurrency.setText(it.currencyName)
                 transferMoneyViewModel.targetCurrencyChange(it)
             }
+
+        btnContinueSendMoney.setOnClickListener {
+            transferMoneyViewModel.chooseAndConvertFinish()
+        }
     }
 }

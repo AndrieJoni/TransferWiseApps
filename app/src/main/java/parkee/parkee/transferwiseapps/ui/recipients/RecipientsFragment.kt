@@ -12,6 +12,10 @@ import parkee.parkee.transferwiseapps.R
 
 class RecipientsFragment : Fragment() {
 
+    private val recipientsViewModel: RecipientsViewModel by viewModel()
+
+    private var recipientAdapter = RecipientAdapter(listOf())
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,8 +26,31 @@ class RecipientsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        recipientsViewModel.getAllRecipient()
+        initObserver()
+        onClickListener()
+    }
+
+    private fun onClickListener() {
+
         btnAddRecipients.setOnClickListener {
             startActivity(Intent(requireActivity(), AddRecipientActivity::class.java))
         }
+
+        recipientAdapter.onRecipientAdapterListener = RecipientAdapter.OnRecipientAdapterListener {
+            //transferMoneyViewModel.recipientChoosen(it)
+        }
     }
+
+    private fun initObserver() {
+
+        recipientsViewModel.setRecipientList.observe(viewLifecycleOwner, {
+
+            recipientAdapter.data = it
+
+            rvRecipients.adapter = recipientAdapter
+        })
+    }
+
+
 }

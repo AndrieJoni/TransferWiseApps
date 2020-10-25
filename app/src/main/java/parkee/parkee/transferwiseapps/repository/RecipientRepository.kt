@@ -7,7 +7,10 @@ class RecipientRepository(private val recipientService: RecipientService) {
     suspend fun getFormRequirments(source: String, target: String) =
         recipientService.getFormRequirments(source, target)
 
-    suspend fun createRecipient(parameter: Map<String,Any>) = recipientService.createRecipient(parameter)
+    suspend fun createRecipient(parameter: Map<String, Any>) =
+        recipientService.createRecipient(parameter)
+
+    suspend fun getAllRecipient() = recipientService.getAllRecipient()
 
     suspend fun validateSortCode(sortCode: String) =
         recipientService.validateSortCode(sortCode)

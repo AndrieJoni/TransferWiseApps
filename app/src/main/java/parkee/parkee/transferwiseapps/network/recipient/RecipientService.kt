@@ -18,11 +18,11 @@ interface RecipientService {
     @POST("v1/accounts")
     suspend fun createRecipient(
         @Body parameter: Map<String, Any>
-    ): CreateRecipietResponseDto
+    ): RecipientDto
 
-    @POST("v1/accounts")
+    @GET("v1/accounts")
     suspend fun getAllRecipient(
-    ): List<CreateRecipietResponseDto>
+    ): List<RecipientDto>
 
     @GET("v1/validators/sort-code")
     suspend fun validateSortCode(@Query("sortCode") sortCode: String): ValidationRequirementsDto

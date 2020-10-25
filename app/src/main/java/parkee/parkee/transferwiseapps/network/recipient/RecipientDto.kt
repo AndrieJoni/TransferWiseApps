@@ -3,7 +3,7 @@ package parkee.parkee.transferwiseapps.network.recipient
 import com.google.gson.annotations.SerializedName
 import parkee.parkee.transferwiseapps.network.user.UserAddressDto
 
-data class CreateRecipietResponseDto(
+data class RecipientDto(
     @SerializedName("accountHolderName")
     var accountHolderName: String = "",
     @SerializedName("active")

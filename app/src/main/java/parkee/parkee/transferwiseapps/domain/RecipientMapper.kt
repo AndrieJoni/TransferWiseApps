@@ -2,10 +2,23 @@ package parkee.parkee.transferwiseapps.domain
 
 import parkee.parkee.transferwiseapps.network.recipient.FieldDto
 import parkee.parkee.transferwiseapps.network.recipient.FormRequirementsDto
+import parkee.parkee.transferwiseapps.network.recipient.RecipientDto
 import parkee.parkee.transferwiseapps.network.recipient.ValuesAllowedDto
 import parkee.parkee.transferwiseapps.ui.FieldRequirementsModel
 import parkee.parkee.transferwiseapps.ui.FieldSelectValuesRequirementsModel
 import parkee.parkee.transferwiseapps.ui.RecipientBankDetailsModel
+import parkee.parkee.transferwiseapps.ui.RecipientModel
+
+fun Collection<RecipientDto>.mapToRecipientModel(): List<RecipientModel> {
+
+    return map {
+        RecipientModel(
+            it.id,
+            it.accountHolderName,
+            it.currency
+        )
+    }
+}
 
 fun Collection<FieldDto>.mapToFieldRequirementsModel(): List<FieldRequirementsModel> {
 
