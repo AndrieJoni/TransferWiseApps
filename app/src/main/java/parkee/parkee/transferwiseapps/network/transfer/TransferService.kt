@@ -1,9 +1,6 @@
 package parkee.parkee.transferwiseapps.network.transfer
 
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 @JvmSuppressWildcards
 interface TransferService {
@@ -13,7 +10,7 @@ interface TransferService {
         @Body parameter: Map<String, Any>
     ): CreateTransferResponseDto
 
-    @POST("v1/transfers")
+    @GET("v1/transfers")
     suspend fun getAllTransfer(
     ): List<CreateTransferResponseDto>
 

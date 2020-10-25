@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
@@ -27,11 +26,15 @@ class HomeFragment : Fragment() {
         initObserver()
     }
 
-    private fun initObserver(){
+    private fun initObserver() {
 
-        homeViewModel.showAccountBalanceEvent.observe(this, {
+        homeViewModel.showAccountBalanceEvent.observe(viewLifecycleOwner, {
 
             rvAccountBalance.adapter = AccountBalanceAdapter(it)
+        })
+
+        homeViewModel.showTransferList.observe(viewLifecycleOwner, {
+            rvTransferList.adapter = TransferAdapter(it)
         })
     }
 }

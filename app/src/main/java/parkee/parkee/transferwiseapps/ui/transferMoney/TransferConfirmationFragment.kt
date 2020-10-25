@@ -51,11 +51,12 @@ class TransferConfirmationFragment : Fragment() {
 
             textViewGuaranteeRateValue.text = it.guaranteeRate.toString()
 
+            textViewShouldArriveValue.text = it.arriveTime
+
             textViewRecipientGetValue.text =
                 String.format("%s %s", it.targetAmount, it.targetCurrency?.currencyName)
 
             textViewRecipientNameValue.text = it.recipient?.name
-
         })
     }
 

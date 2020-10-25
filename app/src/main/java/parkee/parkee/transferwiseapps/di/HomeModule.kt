@@ -5,5 +5,5 @@ import org.koin.dsl.module
 import parkee.parkee.transferwiseapps.ui.home.HomeViewModel
 
 val homeModule = module {
-    viewModel { HomeViewModel(get(), get(),get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get()) }
 }
