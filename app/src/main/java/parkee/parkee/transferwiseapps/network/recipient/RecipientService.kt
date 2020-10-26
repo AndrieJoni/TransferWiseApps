@@ -21,6 +21,11 @@ interface RecipientService {
     ): RecipientDto
 
     @GET("v1/accounts")
+    suspend fun getRecipientWithQuery(
+        @Query("currency") currency: String,
+    ): List<RecipientDto>
+
+    @GET("v1/accounts")
     suspend fun getAllRecipient(
     ): List<RecipientDto>
 

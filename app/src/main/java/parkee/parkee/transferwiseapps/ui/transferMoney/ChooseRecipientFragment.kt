@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_choose_recipient_for_transfer.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import parkee.parkee.transferwiseapps.R
@@ -26,9 +27,23 @@ class ChooseRecipientFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        transferMoneyViewModel.getAllRecipient()
+        initView()
         initObserver()
         initListener()
+    }
+
+    private fun initView() {
+        rvRecipients.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        transferMoneyViewModel.getAllRecipient()
     }
 
     private fun initListener() {

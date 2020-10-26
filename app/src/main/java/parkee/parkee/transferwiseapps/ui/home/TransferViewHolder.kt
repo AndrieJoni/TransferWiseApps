@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.transfer_item_layout.view.*
 import parkee.parkee.transferwiseapps.ui.TransferMoneyModel
+import parkee.parkee.transferwiseapps.utils.FormatCurrency
 
 class TransferViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -17,13 +18,13 @@ class TransferViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         itemView.textViewTransferSourceAmount.text = String.format(
             "%s %s",
-            transferMoneyModel.sourceAmount,
+            FormatCurrency.convert(transferMoneyModel.sourceAmount.toLong()),
             transferMoneyModel.sourceCurrency
         )
 
         itemView.textViewTransferTargetAmount.text = String.format(
             "%s %s",
-            transferMoneyModel.targetAmount,
+            FormatCurrency.convert(transferMoneyModel.targetAmount.toLong()),
             transferMoneyModel.targetCurrency
         )
 

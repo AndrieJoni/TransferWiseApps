@@ -37,6 +37,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <Button
+        android:id="@+id/btnConfirmReason"
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:layout_margin="16dp"

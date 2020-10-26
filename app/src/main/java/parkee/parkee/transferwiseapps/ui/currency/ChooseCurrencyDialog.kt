@@ -55,11 +55,16 @@ class ChooseCurrencyDialog : FullScreenDialog() {
     }
 
     private fun onClickListener() {
+
         chooseCurrencyAdapter.onCurrencyAdapterListener =
             ChooseCurrencyAdapter.OnCurrencyAdapterListener {
                 onCurrencyDialogListener?.onCurrencyItemClicked(it)
                 dismiss()
             }
+
+        toolbar.setNavigationOnClickListener {
+            dismiss()
+        }
     }
 
     private fun setCurrency(data: List<CurrencyModel>) {

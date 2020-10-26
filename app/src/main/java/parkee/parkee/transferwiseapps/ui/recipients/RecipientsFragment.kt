@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_recipients.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
@@ -27,18 +29,38 @@ class RecipientsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recipientsViewModel.getAllRecipient()
+        initView()
         initObserver()
         onClickListener()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == AddRecipientActivity.REQUEST_ADD_RECIPIENT &&
+            resultCode == AppCompatActivity.RESULT_OK
+        ) {
+            recipientsViewModel.getAllRecipient()
+        }
+    }
+
+    private fun initView() {
+
+        rvRecipients.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
     private fun onClickListener() {
 
         btnAddRecipients.setOnClickListener {
-            startActivity(Intent(requireActivity(), AddRecipientActivity::class.java))
-        }
-
-        recipientAdapter.onRecipientAdapterListener = RecipientAdapter.OnRecipientAdapterListener {
-            //transferMoneyViewModel.recipientChoosen(it)
+            startActivityForResult(
+                Intent(requireActivity(), AddRecipientActivity::class.java),
+                AddRecipientActivity.REQUEST_ADD_RECIPIENT
+            )
         }
     }
 
@@ -51,6 +73,4 @@ class RecipientsFragment : Fragment() {
             rvRecipients.adapter = recipientAdapter
         })
     }
-
-
 }

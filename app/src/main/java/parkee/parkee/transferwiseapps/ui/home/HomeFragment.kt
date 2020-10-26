@@ -62,6 +62,8 @@ class HomeFragment : Fragment() {
 
     private fun initObserver() {
 
+        lifecycle.addObserver(homeViewModel)
+
         homeViewModel.showAccountBalanceEvent.observe(viewLifecycleOwner, {
 
             rvAccountBalance.adapter = AccountBalanceAdapter(it)

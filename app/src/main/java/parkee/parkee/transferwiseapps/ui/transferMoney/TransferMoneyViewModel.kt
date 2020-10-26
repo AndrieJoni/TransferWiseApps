@@ -10,6 +10,7 @@ import parkee.parkee.transferwiseapps.domain.mapToRecipientModel
 import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
 import parkee.parkee.transferwiseapps.network.quote.CreateQuoteResponseDto
 import parkee.parkee.transferwiseapps.network.recipient.RecipientDto
+import parkee.parkee.transferwiseapps.network.transfer.CreateFundResponseDto
 import parkee.parkee.transferwiseapps.network.transfer.CreateTransferResponseDto
 import parkee.parkee.transferwiseapps.network.transfer.TransferRepository
 import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
@@ -36,11 +37,17 @@ class TransferMoneyViewModel(
     var setFeeAmount = SingleLiveEvent<Long>()
     var setRecipientList = MutableLiveData<List<RecipientModel>>()
     var setTransferConfirmationDetail = SingleLiveEvent<TransferConfirmationModel>()
-    var goToPageEvent = SingleLiveEvent<Int>()
 
-    var currentSourceAmount = 0
-    var currentTargetAmount = 0
-    var currentGuaranteeRate: Double = 0.0
+    var sourceCurrencyErrorEvent = SingleLiveEvent<Boolean>()
+    var targetCurrencyErrorEvent = SingleLiveEvent<Boolean>()
+    var sourceAmountErrorEvent = SingleLiveEvent<Boolean>()
+
+    var goToPageEvent = SingleLiveEvent<Int>()
+    var goBackWithResult = SingleLiveEvent<Any>()
+
+    private var currentSourceAmount = 0
+    private var currentTargetAmount = 0
+    private var currentGuaranteeRate: Double = 0.0
     private var currentTransferFee: Double = 0.0
     private var currentArriveTime: String = ""
 
@@ -50,27 +57,42 @@ class TransferMoneyViewModel(
     private var currentQuotesId = 0
 
     fun handleSourceTextWatcher(amount: String) {
+
         if (amount.isNotEmpty() and !amount.isBlank()) {
+
+            sourceAmountErrorEvent.value = false
             currentSourceAmount = amount.toInt()
+
             getTemporaryQuotes()
+
         } else {
+
+            sourceAmountErrorEvent.value = true
             currentSourceAmount = 0
         }
     }
 
     fun sourceCurrencyChange(currency: CurrencyModel) {
+
         currentSourceCurrency = currency
 
         if (currentSourceAmount > 0) {
+            sourceCurrencyErrorEvent.value = false
             getTemporaryQuotes()
+        } else {
+            sourceCurrencyErrorEvent.value = true
         }
     }
 
     fun targetCurrencyChange(currency: CurrencyModel) {
+
         currentTargetCurrency = currency
 
         if (currentSourceAmount > 0) {
+            targetCurrencyErrorEvent.value = false
             getTemporaryQuotes()
+        } else {
+            targetCurrencyErrorEvent.value = true
         }
     }
 
@@ -79,8 +101,26 @@ class TransferMoneyViewModel(
         createQuotes()
     }
 
+    fun reasonConfirmed() {
+        goToPageEvent.value = 3
+    }
+
     fun chooseAndConvertFinish() {
-        goToPageEvent.value = 1
+
+        when {
+            currentSourceAmount == 0 -> {
+                sourceAmountErrorEvent.value = true
+            }
+            currentSourceCurrency == null -> {
+                sourceCurrencyErrorEvent.value = true
+            }
+            currentTargetCurrency == null -> {
+                targetCurrencyErrorEvent.value = true
+            }
+            else -> {
+                goToPageEvent.value = 1
+            }
+        }
     }
 
     fun showTransferConfirmationDetail() {
@@ -199,7 +239,9 @@ class TransferMoneyViewModel(
                 var recipientData: List<RecipientDto>? = null
 
                 withContext(Dispatchers.IO) {
-                    recipientData = recipientRepository.getAllRecipient()
+                    recipientData = recipientRepository.getRecipientWithQuery(
+                        currentTargetCurrency?.currencyName.toString()
+                    )
                 }
 
                 if (recipientData != null) {
@@ -242,14 +284,22 @@ class TransferMoneyViewModel(
                         )
 
                         createTransferResponseDto = transferRepository.createTransfer(parameter)
+                    }
 
-                        if (createTransferResponseDto != null) {
+                    if (createTransferResponseDto != null) {
 
-                            transferRepository.createFund(
+                        var createFundResponseDto: CreateFundResponseDto? = null
+
+                        withContext(Dispatchers.IO) {
+                            createFundResponseDto = transferRepository.createFund(
                                 userProfilesPersonalDto[0].id.toString(),
                                 createTransferResponseDto?.id.toString(),
                                 mapOf("type" to "BALANCE")
                             )
+                        }
+
+                        if (createFundResponseDto != null && createFundResponseDto!!.status == "COMPLETED") {
+                            goBackWithResult.call()
                         }
                     }
                 }
@@ -257,7 +307,6 @@ class TransferMoneyViewModel(
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
         }
     }
 }

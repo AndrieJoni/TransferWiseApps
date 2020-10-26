@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_add_recipients.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
@@ -13,7 +15,7 @@ import parkee.parkee.transferwiseapps.ui.currency.ChooseCurrencyDialog
 
 class AddRecipientActivity : AppCompatActivity() {
 
-    private val recipientsViewModel: RecipientsViewModel by viewModel()
+    private val addRecipientViewModel: AddRecipientViewModel by viewModel()
 
     private val dynamicFieldAdapter = DynamicFieldAdapter(listOf())
 
@@ -35,6 +37,22 @@ class AddRecipientActivity : AppCompatActivity() {
 
     private fun initListener() {
 
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
+        textInputEditTextFirstName.addTextChangedListener {
+            addRecipientViewModel.handleFirstNameTextWatcher(it.toString())
+        }
+
+        textInputEditTextLastName.addTextChangedListener {
+            addRecipientViewModel.handleLastNameTextWather(it.toString())
+        }
+
+        textInputEditTextCurrency.addTextChangedListener {
+            addRecipientViewModel.handleCurrencyTextWatcher(it.toString())
+        }
+
         textInputEditTextCurrency.setOnClickListener {
             chooseCurrencyDialog.show(supportFragmentManager, "CurrencyDialog")
         }
@@ -42,7 +60,7 @@ class AddRecipientActivity : AppCompatActivity() {
         chooseCurrencyDialog.onCurrencyDialogListener =
             ChooseCurrencyDialog.OnCurrencyDialogListener {
                 textInputEditTextCurrency.setText(it.currencyName)
-                recipientsViewModel.currencySelected(it)
+                addRecipientViewModel.currencySelected(it)
             }
 
         spinnerRecipientsBankDetails.onItemSelectedListener =
@@ -54,7 +72,7 @@ class AddRecipientActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    recipientsViewModel.recipientBankDetailsSelected(
+                    addRecipientViewModel.recipientBankDetailsSelected(
                         parent?.getItemAtPosition(position) as RecipientBankDetailsModel
                     )
                 }
@@ -64,11 +82,11 @@ class AddRecipientActivity : AppCompatActivity() {
             }
 
         btnAddRecipients.setOnClickListener {
-            recipientsViewModel.addRecipient(
+            addRecipientViewModel.addRecipient(
                 textInputEditTextFirstName.text.toString(),
                 textInputEditTextLastName.text.toString(),
                 spinnerRecipientType.selectedItem as String,
-                spinnerRecipientsBankDetails.selectedItem as RecipientBankDetailsModel,
+                spinnerRecipientsBankDetails.selectedItem as RecipientBankDetailsModel?,
                 dynamicFieldAdapter.data
             )
         }
@@ -102,14 +120,55 @@ class AddRecipientActivity : AppCompatActivity() {
 
     private fun initObserver() {
 
-        recipientsViewModel.setRecipientBankDetailsEvent.observe(this, {
+        addRecipientViewModel.setRecipientBankDetailsEvent.observe(this, {
             setSpinnerRecipientBankDetails(it)
         })
 
-        recipientsViewModel.showFieldRequirementsEvent.observe(this, {
+        addRecipientViewModel.showFieldRequirementsEvent.observe(this, {
 
             dynamicFieldAdapter.data = it
             rvAddRecipientField.adapter = dynamicFieldAdapter
         })
+
+        addRecipientViewModel.currencyErrorEvent.observe(this, {
+
+            textInputLayoutTextCurrency.isErrorEnabled = it
+
+            if (it) textInputLayoutTextCurrency.error = "choose currency"
+        })
+
+        addRecipientViewModel.firstNameErrorEvent.observe(this, {
+
+            textInputLayoutTextFirstName.isErrorEnabled = it
+
+            if (it) textInputLayoutTextFirstName.error = "must be filled"
+        })
+
+        addRecipientViewModel.lastNameErrorEvent.observe(this, {
+
+            textInputLayoutTextLastName.isErrorEnabled = false
+
+            if (it) textInputLayoutTextLastName.error = "must be filled"
+        })
+
+        addRecipientViewModel.clearErrorEvent.observe(this, Observer {
+
+            textInputLayoutTextCurrency.error = ""
+            textInputLayoutTextFirstName.error = ""
+            textInputLayoutTextLastName.error = ""
+
+            textInputLayoutTextCurrency.isErrorEnabled = false
+            textInputLayoutTextFirstName.isErrorEnabled = false
+            textInputLayoutTextLastName.isErrorEnabled = false
+        })
+
+        addRecipientViewModel.goBackWithResultEvent.observe(this, Observer {
+            setResult(RESULT_OK)
+            finish()
+        })
+    }
+
+    companion object {
+        const val REQUEST_ADD_RECIPIENT = 12345
     }
 }

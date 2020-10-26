@@ -46,6 +46,28 @@ class ChooseAndConvertCurrencyFragment : Fragment() {
         transferMoneyViewModel.setTargetAmount.observe(viewLifecycleOwner, {
             textInputEditTextTargetAmount.setText(it.toString())
         })
+
+        transferMoneyViewModel.sourceCurrencyErrorEvent.observe(viewLifecycleOwner, {
+
+            textInputLayoutTextSourceCurrency.isErrorEnabled = it
+
+            if (it) textInputLayoutTextSourceCurrency.error = "Must be filled"
+        })
+
+        transferMoneyViewModel.targetCurrencyErrorEvent.observe(viewLifecycleOwner, {
+
+            textInputLayoutTextTargetCurrency.isErrorEnabled = it
+
+            if (it) textInputLayoutTextTargetCurrency.error = "Must be filled"
+
+        })
+
+        transferMoneyViewModel.sourceAmountErrorEvent.observe(viewLifecycleOwner, {
+
+            textInputLayoutTextSourceAmount.isErrorEnabled = it
+
+            if (it) textInputLayoutTextSourceAmount.error = "Must be filled"
+        })
     }
 
     private fun onClickListener() {

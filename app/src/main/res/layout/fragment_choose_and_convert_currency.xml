@@ -29,25 +29,27 @@
         android:weightSum="1">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutTextSourceAmount"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:hint="You Send">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextSourceAmount"
                 android:layout_width="match_parent"
-                android:inputType="number"
-                android:layout_height="62dp" />
+                android:layout_height="62dp"
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutTextSourceCurrency"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
+            android:layout_weight="0.65"
             android:hint="Currency">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -67,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
+        android:textColor="@color/black"
         android:textSize="16sp"
         tools:text="Fee : 20.000" />
 
@@ -81,23 +84,24 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:hint="Recipient Gets">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextTargetAmount"
                 android:layout_width="match_parent"
-                android:longClickable="false"
+                android:layout_height="62dp"
                 android:focusable="false"
-                android:layout_height="62dp" />
+                android:longClickable="false" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutTextTargetCurrency"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
+            android:layout_weight="0.65"
             android:hint="Currency">
 
             <com.google.android.material.textfield.TextInputEditText

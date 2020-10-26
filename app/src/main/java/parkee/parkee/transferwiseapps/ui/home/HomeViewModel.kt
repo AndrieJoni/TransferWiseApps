@@ -1,8 +1,6 @@
 package parkee.parkee.transferwiseapps.ui.home
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,12 +21,13 @@ class HomeViewModel(
     private val userProfilesRepository: UserProfilesRepository,
     private val borderlessAccountsRepository: BorderlessAccountsRepository,
     private val transferRepository: TransferRepository
-) : ViewModel() {
+) : ViewModel() ,LifecycleObserver{
 
     var showAccountBalanceEvent = MutableLiveData<List<AccountBalanceModel>>()
     var showTransferList = MutableLiveData<List<TransferMoneyModel>>()
 
-    init {
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    private fun onResume() {
         getAccountBalance()
         getAllTransfer()
     }

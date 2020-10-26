@@ -40,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         onClickListener()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == TransferMoneyActivity.REQUEST_TRANSFER_MONEY && resultCode == RESULT_OK) {
+            bottomNavMain.selectedItemId = R.id.menu_home
+        }
+    }
+
     private fun initView() {
 
         val mainFragmentAdapter = MainViewPagerAdapter(this)

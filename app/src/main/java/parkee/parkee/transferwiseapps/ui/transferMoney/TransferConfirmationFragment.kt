@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_transfer_confirmation.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.format.DateTimeFormatter
 import parkee.parkee.transferwiseapps.R
 
 class TransferConfirmationFragment : Fragment() {
@@ -51,7 +53,9 @@ class TransferConfirmationFragment : Fragment() {
 
             textViewGuaranteeRateValue.text = it.guaranteeRate.toString()
 
-            textViewShouldArriveValue.text = it.arriveTime
+            textViewShouldArriveValue.text = ZonedDateTime.parse(it.arriveTime).format(
+                DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            )
 
             textViewRecipientGetValue.text =
                 String.format("%s %s", it.targetAmount, it.targetCurrency?.currencyName)

@@ -10,6 +10,9 @@ class RecipientRepository(private val recipientService: RecipientService) {
     suspend fun createRecipient(parameter: Map<String, Any>) =
         recipientService.createRecipient(parameter)
 
+    suspend fun getRecipientWithQuery(currency: String) =
+        recipientService.getRecipientWithQuery(currency)
+
     suspend fun getAllRecipient() = recipientService.getAllRecipient()
 
     suspend fun validateSortCode(sortCode: String) =
