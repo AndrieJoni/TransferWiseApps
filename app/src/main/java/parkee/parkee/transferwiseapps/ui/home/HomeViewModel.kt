@@ -6,15 +6,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import parkee.parkee.transferwiseapps.domain.mapToListAccountBalanceModel
 import parkee.parkee.transferwiseapps.domain.mapToTransferMoneyModel
-import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
-import parkee.parkee.transferwiseapps.network.transfer.CreateTransferResponseDto
-import parkee.parkee.transferwiseapps.repository.TransferRepository
-import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
-import parkee.parkee.transferwiseapps.repository.BorderlessAccountsRepository
-import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
-import parkee.parkee.transferwiseapps.repository.UserRepository
-import parkee.parkee.transferwiseapps.ui.AccountBalanceModel
-import parkee.parkee.transferwiseapps.ui.TransferMoneyModel
+import parkee.parkee.transferwiseapps.data.network.borderlessAccount.AccountBalanceDto
+import parkee.parkee.transferwiseapps.data.network.transfer.CreateTransferResponseDto
+import parkee.parkee.transferwiseapps.data.repository.TransferRepository
+import parkee.parkee.transferwiseapps.data.network.userProfiles.UserProfilesPersonalDto
+import parkee.parkee.transferwiseapps.data.repository.BorderlessAccountsRepository
+import parkee.parkee.transferwiseapps.data.repository.UserProfilesRepository
+import parkee.parkee.transferwiseapps.data.repository.UserRepository
+import parkee.parkee.transferwiseapps.uiModel.AccountBalanceModel
+import parkee.parkee.transferwiseapps.uiModel.TransferMoneyModel
 
 class HomeViewModel(
     private val userRepository: UserRepository,

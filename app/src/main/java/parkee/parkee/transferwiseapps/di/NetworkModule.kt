@@ -1,7 +1,7 @@
 package parkee.parkee.transferwiseapps.di
 
 import org.koin.dsl.module
-import parkee.parkee.transferwiseapps.network.client.TransferWiseClient
+import parkee.parkee.transferwiseapps.data.network.client.TransferWiseClient
 
 val networkModule = module {
 

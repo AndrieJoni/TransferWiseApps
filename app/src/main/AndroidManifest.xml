@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.transferMoney.TransferMoneyActivity" />
-        <activity android:name=".ui.recipients.AddRecipientActivity" />
-        <activity android:name=".ui.home.DetailTransferActivity" />
+        <activity android:name=".ui.recipients.add.AddRecipientActivity" />
+        <activity android:name=".ui.home.detailTransfer.DetailTransferActivity" />
     </application>
 
 </manifest>

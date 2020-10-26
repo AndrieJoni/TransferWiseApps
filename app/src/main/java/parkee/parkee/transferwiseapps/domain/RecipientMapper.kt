@@ -1,13 +1,13 @@
 package parkee.parkee.transferwiseapps.domain
 
-import parkee.parkee.transferwiseapps.network.recipient.FieldDto
-import parkee.parkee.transferwiseapps.network.recipient.FormRequirementsDto
-import parkee.parkee.transferwiseapps.network.recipient.RecipientDto
-import parkee.parkee.transferwiseapps.network.recipient.ValuesAllowedDto
-import parkee.parkee.transferwiseapps.ui.FieldRequirementsModel
-import parkee.parkee.transferwiseapps.ui.FieldSelectValuesRequirementsModel
-import parkee.parkee.transferwiseapps.ui.RecipientBankDetailsModel
-import parkee.parkee.transferwiseapps.ui.RecipientModel
+import parkee.parkee.transferwiseapps.data.network.recipient.FieldDto
+import parkee.parkee.transferwiseapps.data.network.recipient.FormRequirementsDto
+import parkee.parkee.transferwiseapps.data.network.recipient.RecipientDto
+import parkee.parkee.transferwiseapps.data.network.recipient.ValuesAllowedDto
+import parkee.parkee.transferwiseapps.uiModel.FieldRequirementsModel
+import parkee.parkee.transferwiseapps.uiModel.FieldSelectValuesRequirementsModel
+import parkee.parkee.transferwiseapps.uiModel.RecipientBankDetailsModel
+import parkee.parkee.transferwiseapps.uiModel.RecipientModel
 
 fun Collection<RecipientDto>.mapToRecipientModel(): List<RecipientModel> {
 

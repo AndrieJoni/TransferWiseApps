@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recipient_item_layout.view.*
 import parkee.parkee.transferwiseapps.R
-import parkee.parkee.transferwiseapps.ui.RecipientModel
+import parkee.parkee.transferwiseapps.uiModel.RecipientModel
 
 class RecipientAdapter(var data: List<RecipientModel>) :
     RecyclerView.Adapter<RecipientViewHolder>() {

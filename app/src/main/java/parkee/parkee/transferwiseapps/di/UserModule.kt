@@ -1,10 +1,10 @@
 package parkee.parkee.transferwiseapps.di
 
 import org.koin.dsl.module
-import parkee.parkee.transferwiseapps.network.user.UserService
-import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesService
-import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
-import parkee.parkee.transferwiseapps.repository.UserRepository
+import parkee.parkee.transferwiseapps.data.network.user.UserService
+import parkee.parkee.transferwiseapps.data.network.userProfiles.UserProfilesService
+import parkee.parkee.transferwiseapps.data.repository.UserProfilesRepository
+import parkee.parkee.transferwiseapps.data.repository.UserRepository
 import retrofit2.Retrofit
 
 val userModule = module {

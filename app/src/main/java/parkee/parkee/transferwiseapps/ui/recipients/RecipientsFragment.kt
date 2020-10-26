@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_recipients.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
+import parkee.parkee.transferwiseapps.ui.recipients.add.AddRecipientActivity
 
 class RecipientsFragment : Fragment() {
 

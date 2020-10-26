@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.currency_item_layout.view.*
 import parkee.parkee.transferwiseapps.R
-import parkee.parkee.transferwiseapps.ui.CurrencyModel
+import parkee.parkee.transferwiseapps.uiModel.CurrencyModel
 
 class ChooseCurrencyAdapter(var data: List<CurrencyModel>) :
     RecyclerView.Adapter<ChooseCurrencyViewHolder>() {

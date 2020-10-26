@@ -6,9 +6,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import parkee.parkee.transferwiseapps.domain.mapToListCurrencyModel
-import parkee.parkee.transferwiseapps.network.borderlessAccount.CurrencyDto
-import parkee.parkee.transferwiseapps.repository.BorderlessAccountsRepository
-import parkee.parkee.transferwiseapps.ui.CurrencyModel
+import parkee.parkee.transferwiseapps.data.network.borderlessAccount.CurrencyDto
+import parkee.parkee.transferwiseapps.data.repository.BorderlessAccountsRepository
+import parkee.parkee.transferwiseapps.uiModel.CurrencyModel
 import parkee.parkee.transferwiseapps.utils.SingleLiveEvent
 
 class ChooseCurrencyViewModel(private val borderlessAccountsRepository: BorderlessAccountsRepository) :
