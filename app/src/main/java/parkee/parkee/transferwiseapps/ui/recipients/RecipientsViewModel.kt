@@ -4,21 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
-import parkee.parkee.transferwiseapps.domain.mapToRecipientBankDetailsModel
 import parkee.parkee.transferwiseapps.domain.mapToRecipientModel
-import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
-import parkee.parkee.transferwiseapps.network.recipient.RecipientDto
-import parkee.parkee.transferwiseapps.network.recipient.FormRequirementsDto
-import parkee.parkee.transferwiseapps.network.recipient.ValidationRequirementsDto
-import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
-import parkee.parkee.transferwiseapps.repository.BorderlessAccountsRepository
-import parkee.parkee.transferwiseapps.repository.RecipientRepository
-import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
-import parkee.parkee.transferwiseapps.ui.CurrencyModel
-import parkee.parkee.transferwiseapps.ui.FieldRequirementsModel
-import parkee.parkee.transferwiseapps.ui.RecipientBankDetailsModel
-import parkee.parkee.transferwiseapps.ui.RecipientModel
-import parkee.parkee.transferwiseapps.utils.SingleLiveEvent
+import parkee.parkee.transferwiseapps.data.network.recipient.RecipientDto
+import parkee.parkee.transferwiseapps.data.repository.RecipientRepository
+import parkee.parkee.transferwiseapps.uiModel.RecipientModel
 
 class RecipientsViewModel(
     private val recipientRepository: RecipientRepository,
