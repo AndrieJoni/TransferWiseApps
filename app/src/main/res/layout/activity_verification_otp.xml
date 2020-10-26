@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_white"
+        app:title="Verification OTP"
+        app:titleTextColor="@color/white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/base16"
+                android:src="@drawable/ic_baseline_person"
+                android:text="Welcome Back."
+                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.35" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="We just sent you an SMS"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.45" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base16"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline">
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/base16"
+                    android:text="To Log in, enter the security code we sent to *****8888"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/base16"
+                    android:layout_marginVertical="@dimen/base8"
+                    android:text="Type your 6-digit security code here"
+                    android:textColor="?attr/colorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/base8"
+                    android:orientation="horizontal"
+                    android:weightSum="6">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"
+                        android:layout_marginHorizontal="@dimen/base8"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimary"
+                        app:cardElevation="0dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"
+                        android:layout_marginHorizontal="@dimen/base8"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimary"
+                        app:cardElevation="0dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"
+                        android:layout_marginHorizontal="@dimen/base8"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimary"
+                        app:cardElevation="0dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"
+                        android:layout_marginHorizontal="@dimen/base8"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimary"
+                        app:cardElevation="0dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"
+                        android:layout_marginHorizontal="@dimen/base8"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimary"
+                        app:cardElevation="0dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"
+                        android:layout_marginHorizontal="@dimen/base8"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimary"
+                        app:cardElevation="0dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:layout_margin="@dimen/base16"
+                    android:text="Log In" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/base16"
+                    android:text="I didn't recieve a code"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorPrimary" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>
