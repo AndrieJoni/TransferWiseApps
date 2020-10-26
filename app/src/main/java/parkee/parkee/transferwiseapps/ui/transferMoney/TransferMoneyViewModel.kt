@@ -12,12 +12,8 @@ import parkee.parkee.transferwiseapps.network.quote.CreateQuoteResponseDto
 import parkee.parkee.transferwiseapps.network.recipient.RecipientDto
 import parkee.parkee.transferwiseapps.network.transfer.CreateFundResponseDto
 import parkee.parkee.transferwiseapps.network.transfer.CreateTransferResponseDto
-import parkee.parkee.transferwiseapps.network.transfer.TransferRepository
 import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
-import parkee.parkee.transferwiseapps.repository.BorderlessAccountsRepository
-import parkee.parkee.transferwiseapps.repository.QuoteRepository
-import parkee.parkee.transferwiseapps.repository.RecipientRepository
-import parkee.parkee.transferwiseapps.repository.UserProfilesRepository
+import parkee.parkee.transferwiseapps.repository.*
 import parkee.parkee.transferwiseapps.ui.CurrencyModel
 import parkee.parkee.transferwiseapps.ui.RecipientModel
 import parkee.parkee.transferwiseapps.ui.TransferConfirmationModel
@@ -37,6 +33,7 @@ class TransferMoneyViewModel(
     var setFeeAmount = SingleLiveEvent<Long>()
     var setRecipientList = MutableLiveData<List<RecipientModel>>()
     var setTransferConfirmationDetail = SingleLiveEvent<TransferConfirmationModel>()
+    var setTargetCurrency = SingleLiveEvent<String>()
 
     var sourceCurrencyErrorEvent = SingleLiveEvent<Boolean>()
     var targetCurrencyErrorEvent = SingleLiveEvent<Boolean>()
@@ -99,6 +96,26 @@ class TransferMoneyViewModel(
     fun recipientChoosen(recipientModel: RecipientModel) {
         currentRecipient = recipientModel
         createQuotes()
+    }
+
+    fun onTabSelected(position: Int) {
+
+        if (position == 1) {
+
+            currentTargetCurrency = currentSourceCurrency
+
+            setTargetCurrency.value = currentSourceCurrency?.currencyName
+
+            getTemporaryQuotes()
+
+        } else if (position == 0) {
+
+            currentTargetCurrency = null
+
+            setTargetCurrency.value = ""
+            setFeeAmount.value = 0
+            setTargetAmount.value = 0
+        }
     }
 
     fun reasonConfirmed() {

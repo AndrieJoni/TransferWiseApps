@@ -8,7 +8,7 @@ import parkee.parkee.transferwiseapps.domain.mapToListAccountBalanceModel
 import parkee.parkee.transferwiseapps.domain.mapToTransferMoneyModel
 import parkee.parkee.transferwiseapps.network.borderlessAccount.AccountBalanceDto
 import parkee.parkee.transferwiseapps.network.transfer.CreateTransferResponseDto
-import parkee.parkee.transferwiseapps.network.transfer.TransferRepository
+import parkee.parkee.transferwiseapps.repository.TransferRepository
 import parkee.parkee.transferwiseapps.network.userProfiles.UserProfilesPersonalDto
 import parkee.parkee.transferwiseapps.repository.BorderlessAccountsRepository
 import parkee.parkee.transferwiseapps.repository.UserProfilesRepository

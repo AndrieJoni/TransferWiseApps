@@ -22,7 +22,9 @@ class TransferWiseApplication : MultiDexApplication() {
                 borderlessAccountsModule,
                 quoteModule,
                 transferMoneyModule,
+                exchangeRateModule,
                 homeModule,
+                detailTransferModule,
                 recipientsModules,
             )
         }

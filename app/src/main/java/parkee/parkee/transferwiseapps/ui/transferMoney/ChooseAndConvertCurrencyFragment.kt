@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_choose_and_convert_currency.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import parkee.parkee.transferwiseapps.R
@@ -68,9 +69,26 @@ class ChooseAndConvertCurrencyFragment : Fragment() {
 
             if (it) textInputLayoutTextSourceAmount.error = "Must be filled"
         })
+
+        transferMoneyViewModel.setTargetCurrency.observe(viewLifecycleOwner, {
+            textInputEditTextTargetCurrency.setText(it)
+        })
     }
 
     private fun onClickListener() {
+
+        tabLayoutConvert.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.position?.let { transferMoneyViewModel.onTabSelected(it) }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
 
         textInputEditTextSourceCurrency.setOnClickListener {
             currencySourceDialog.show(childFragmentManager, "SourceCurrencyDialog")

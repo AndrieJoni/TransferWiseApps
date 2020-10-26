@@ -7,6 +7,8 @@ fun Collection<CreateTransferResponseDto>.mapToTransferMoneyModel() : List<Trans
 
     return map {
         TransferMoneyModel(
+            id = it.id,
+            quoteId = it.quote,
             sourceCurrency = it.sourceCurrency,
             targetCurrency = it.targetCurrency,
             sourceAmount = it.sourceValue,

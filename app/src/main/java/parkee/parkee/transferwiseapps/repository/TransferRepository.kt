@@ -1,4 +1,6 @@
-package parkee.parkee.transferwiseapps.network.transfer
+package parkee.parkee.transferwiseapps.repository
+
+import parkee.parkee.transferwiseapps.network.transfer.TransferService
 
 class TransferRepository(private val transferService: TransferService) {
 

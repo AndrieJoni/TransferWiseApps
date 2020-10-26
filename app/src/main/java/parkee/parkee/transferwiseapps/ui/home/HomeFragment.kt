@@ -1,5 +1,6 @@
 package parkee.parkee.transferwiseapps.ui.home
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
+import parkee.parkee.transferwiseapps.ui.TransferMoneyModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),TransferAdapter.OnTransferAdapterListener {
 
     private val homeViewModel: HomeViewModel by viewModel()
 
@@ -30,7 +32,16 @@ class HomeFragment : Fragment() {
         initObserver()
     }
 
+    override fun onTransferClicked(transferMoneyModel: TransferMoneyModel) {
+
+        val intent = Intent(requireActivity(),DetailTransferActivity::class.java)
+        intent.putExtra(DetailTransferActivity.TRANSFER_MONEY_DATA,transferMoneyModel)
+
+        startActivity(intent)
+    }
+
     private fun initView() {
+
         rvTransferList.addItemDecoration(
             DividerItemDecoration(
                 requireContext(),
@@ -70,7 +81,7 @@ class HomeFragment : Fragment() {
         })
 
         homeViewModel.showTransferList.observe(viewLifecycleOwner, {
-            rvTransferList.adapter = TransferAdapter(it)
+            rvTransferList.adapter = TransferAdapter(it,this)
         })
     }
 }

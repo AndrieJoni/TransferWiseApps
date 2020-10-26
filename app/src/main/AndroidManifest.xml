@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".ui.transferMoney.TransferMoneyActivity" />
         <activity android:name=".ui.recipients.AddRecipientActivity" />
+        <activity android:name=".ui.home.DetailTransferActivity" />
     </application>
 
 </manifest>

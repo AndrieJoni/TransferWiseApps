@@ -30,7 +30,7 @@
         app:strokeWidth="1dp">
 
         <Spinner
-            android:id="@+id/spinnerRecipientType"
+            android:id="@+id/spinnerReasonType"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
