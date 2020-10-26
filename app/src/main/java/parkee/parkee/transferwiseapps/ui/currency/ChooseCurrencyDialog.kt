@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.dialog_choose_currency.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import parkee.parkee.transferwiseapps.R
@@ -22,15 +23,29 @@ class ChooseCurrencyDialog : FullScreenDialog() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dialog_choose_currency, container, false)
+        return requireActivity().layoutInflater.inflate(
+            R.layout.dialog_choose_currency,
+            container,
+            false
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chooseCurrencyViewModel = getViewModel()
+        initView()
         initObserver()
         onClickListener()
         chooseCurrencyViewModel.getAvailableCurrency()
+    }
+
+    private fun initView() {
+        rvChooseCurrency.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
     private fun initObserver() {

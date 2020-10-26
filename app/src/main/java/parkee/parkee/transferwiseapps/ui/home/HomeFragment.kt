@@ -1,10 +1,13 @@
 package parkee.parkee.transferwiseapps.ui.home
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
@@ -23,7 +26,38 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
         initObserver()
+    }
+
+    private fun initView() {
+        rvTransferList.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
+        rvAccountBalance.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(
+                outRect: Rect,
+                view: View,
+                parent: RecyclerView,
+                state: RecyclerView.State
+            ) {
+                val position = parent.getChildAdapterPosition(view)
+                outRect.top = resources
+                    .getDimension(R.dimen.base16).toInt()
+                outRect.bottom = resources
+                    .getDimension(R.dimen.base16).toInt()
+                outRect.left = (if (position == 0) resources
+                    .getDimension(R.dimen.base16) else resources
+                    .getDimension(R.dimen.base8)).toInt()
+                outRect.right = (if (position == state.itemCount - 1) resources
+                    .getDimension(R.dimen.base16) else resources
+                    .getDimension(R.dimen.base8)).toInt()
+            }
+        })
     }
 
     private fun initObserver() {

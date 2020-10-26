@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="120dp"
-    android:layout_height="120dp"
-    android:layout_margin="16dp">
+    android:layout_width="132dp"
+    android:layout_height="132dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingVertical="8dp"
         android:weightSum="3">
 
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:src="@drawable/ic_baseline_account_balance" />
+
+        <TextView
+            android:id="@+id/textViewCurrencyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:gravity="center|start"
+            android:paddingHorizontal="16dp"
+            android:text="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:text="USD Balance" />
 
         <TextView
             android:id="@+id/textViewBalance"
@@ -24,20 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center|start"
-            android:paddingStart="16dp"
+            android:paddingHorizontal="16dp"
             android:text="20sp"
             android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
             tools:text="200000" />
-
-        <TextView
-            android:id="@+id/textViewCurrencyName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center|start"
-            android:paddingStart="16dp"
-            android:text="20sp"
-            tools:text="USD Balance" />
 
     </LinearLayout>
 
