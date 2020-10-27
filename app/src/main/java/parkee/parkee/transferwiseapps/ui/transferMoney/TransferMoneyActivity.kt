@@ -1,14 +1,19 @@
 package parkee.parkee.transferwiseapps.ui.transferMoney
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_transfer_money.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
+import parkee.parkee.transferwiseapps.ui.LoadingDialog
 
 class TransferMoneyActivity : AppCompatActivity() {
 
     private val transferMoneyViewModel: TransferMoneyViewModel by viewModel()
+
+    private var loadingDialog = LoadingDialog()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +52,14 @@ class TransferMoneyActivity : AppCompatActivity() {
         })
 
         transferMoneyViewModel.goBackWithResult.observe(this, {
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             setResult(RESULT_OK)
             finish()
+        })
+
+        transferMoneyViewModel.loadingEvent.observe(this, Observer {
+            if (it) loadingDialog.show(supportFragmentManager, "LoadingDialog")
+            else loadingDialog.dismiss()
         })
     }
 

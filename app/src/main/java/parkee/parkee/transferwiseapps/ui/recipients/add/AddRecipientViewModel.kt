@@ -23,6 +23,7 @@ class AddRecipientViewModel(
     private val userProfilesRepository: UserProfilesRepository
 ) : ViewModel() {
 
+    var loadingEvent = SingleLiveEvent<Boolean>()
     var setRecipientBankDetailsEvent = SingleLiveEvent<List<RecipientBankDetailsModel>>()
     var showFieldRequirementsEvent = SingleLiveEvent<List<FieldRequirementsModel>>()
 
@@ -33,7 +34,7 @@ class AddRecipientViewModel(
     var lastNameErrorEvent = SingleLiveEvent<Boolean>()
     var clearErrorEvent = SingleLiveEvent<Any>()
 
-    var currentCurrencySelected: CurrencyModel? = null
+    private var currentCurrencySelected: CurrencyModel? = null
 
     private fun getFormRequirements(currency: String) {
 
@@ -106,6 +107,8 @@ class AddRecipientViewModel(
             else -> {
 
                 clearErrorEvent.call()
+
+                loadingEvent.value = true
 
                 viewModelScope.launch {
 
@@ -219,6 +222,8 @@ class AddRecipientViewModel(
 
                     } catch (e: Exception) {
                         e.printStackTrace()
+                    } finally {
+                        loadingEvent.value = false
                     }
                 }
             }

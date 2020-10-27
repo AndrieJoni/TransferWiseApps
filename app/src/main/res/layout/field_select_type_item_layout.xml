@@ -10,17 +10,17 @@
         android:id="@+id/fieldsName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="@dimen/base16"
+        android:layout_marginTop="@dimen/base16"
         tools:text="Currency" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/base16"
+        android:layout_marginTop="@dimen/base8"
+        android:layout_marginEnd="@dimen/base16"
+        android:layout_marginBottom="@dimen/base16"
         app:strokeColor="?attr/colorPrimary"
         app:strokeWidth="1dp">
 

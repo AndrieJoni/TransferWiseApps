@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
+        android:paddingHorizontal="@dimen/base16"
+        android:paddingVertical="@dimen/base8"
         android:weightSum="2">
 
         <TextView
@@ -42,8 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
+        android:paddingHorizontal="@dimen/base16"
+        android:paddingVertical="@dimen/base8"
         android:weightSum="2">
 
         <TextView

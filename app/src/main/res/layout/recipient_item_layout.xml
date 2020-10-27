@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="@dimen/base16">
 
     <ImageView
         android:layout_width="32dp"
@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/base16"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/base8"
             android:textSize="16sp"
             tools:text="USD" />
 

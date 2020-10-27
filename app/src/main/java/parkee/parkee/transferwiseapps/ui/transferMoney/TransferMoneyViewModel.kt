@@ -29,6 +29,7 @@ class TransferMoneyViewModel(
     private val transferRepository: TransferRepository
 ) : ViewModel() {
 
+    var loadingEvent = SingleLiveEvent<Boolean>()
     var setTargetAmount = SingleLiveEvent<Long>()
     var setFeeAmount = SingleLiveEvent<Long>()
     var setRecipientList = MutableLiveData<List<RecipientModel>>()
@@ -156,6 +157,8 @@ class TransferMoneyViewModel(
 
     private fun createQuotes() {
 
+        loadingEvent.value = true
+
         viewModelScope.launch {
 
             try {
@@ -209,6 +212,8 @@ class TransferMoneyViewModel(
 
             } catch (e: Exception) {
                 e.printStackTrace()
+            } finally {
+                loadingEvent.value = false
             }
         }
     }
@@ -273,6 +278,8 @@ class TransferMoneyViewModel(
 
     fun buttonPayClicked() {
 
+        loadingEvent.value = true
+
         viewModelScope.launch {
 
             try {
@@ -323,6 +330,8 @@ class TransferMoneyViewModel(
 
             } catch (e: Exception) {
                 e.printStackTrace()
+            } finally {
+                loadingEvent.value = false
             }
         }
     }

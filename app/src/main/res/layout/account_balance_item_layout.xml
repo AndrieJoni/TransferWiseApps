@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingVertical="8dp"
+        android:paddingVertical="@dimen/base8"
         android:weightSum="3">
 
         <ImageView
@@ -22,10 +22,10 @@
             android:id="@+id/textViewCurrencyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/base8"
             android:layout_weight="1"
             android:gravity="center|start"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="@dimen/base16"
             android:text="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center|start"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="@dimen/base16"
             android:text="20sp"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"

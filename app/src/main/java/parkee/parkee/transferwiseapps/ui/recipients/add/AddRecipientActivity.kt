@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_add_recipients.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
+import parkee.parkee.transferwiseapps.ui.LoadingDialog
 import parkee.parkee.transferwiseapps.ui.currency.ChooseCurrencyDialog
 import parkee.parkee.transferwiseapps.uiModel.RecipientBankDetailsModel
 
@@ -20,6 +22,7 @@ class AddRecipientActivity : AppCompatActivity() {
     private val dynamicFieldAdapter = DynamicFieldAdapter(listOf())
 
     private var chooseCurrencyDialog = ChooseCurrencyDialog()
+    private var loadingDialog = LoadingDialog()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -163,8 +166,14 @@ class AddRecipientActivity : AppCompatActivity() {
         })
 
         addRecipientViewModel.goBackWithResultEvent.observe(this, Observer {
+            Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show()
             setResult(RESULT_OK)
             finish()
+        })
+
+        addRecipientViewModel.loadingEvent.observe(this, Observer {
+            if (it) loadingDialog.show(supportFragmentManager, "LoadingDialog")
+            else loadingDialog.dismiss()
         })
     }
 

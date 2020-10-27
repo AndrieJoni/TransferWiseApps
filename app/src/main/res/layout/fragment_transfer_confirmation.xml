@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:text="@string/review_details_of_your_transfer"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:text="@string/transfer_details"
             android:textStyle="bold" />
 
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:weightSum="1">
 
             <TextView
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:weightSum="1">
 
             <TextView
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:weightSum="1">
 
             <TextView
@@ -104,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:weightSum="1">
 
             <TextView
@@ -129,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:weightSum="1">
 
             <TextView
@@ -155,7 +155,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:weightSum="1">
 
             <TextView
@@ -178,7 +178,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:text="@string/recipient_details"
             android:textStyle="bold" />
 
@@ -186,7 +186,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="@dimen/base16"
             android:weightSum="1">
 
             <TextView
@@ -211,7 +211,7 @@
             android:id="@+id/btnTransfer"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/base16"
             android:text="@string/text_continue" />
 
     </LinearLayout>
