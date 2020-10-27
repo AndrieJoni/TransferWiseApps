@@ -1,4 +1,4 @@
-package parkee.parkee.transferwiseapps.ui.transferMoney
+package parkee.parkee.transferwiseapps.ui.transferMoney.pages
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_choose_transfer_reason.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import parkee.parkee.transferwiseapps.R
+import parkee.parkee.transferwiseapps.ui.transferMoney.TransferMoneyViewModel
 
 class ChooseTransferReasonFragment : Fragment() {
 

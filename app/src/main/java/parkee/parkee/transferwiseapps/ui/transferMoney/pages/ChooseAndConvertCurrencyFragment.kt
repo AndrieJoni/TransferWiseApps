@@ -1,4 +1,4 @@
-package parkee.parkee.transferwiseapps.ui.transferMoney
+package parkee.parkee.transferwiseapps.ui.transferMoney.pages
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_choose_and_convert_currency.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import parkee.parkee.transferwiseapps.R
 import parkee.parkee.transferwiseapps.ui.currency.ChooseCurrencyDialog
+import parkee.parkee.transferwiseapps.ui.transferMoney.TransferMoneyViewModel
 
 class ChooseAndConvertCurrencyFragment : Fragment() {
 

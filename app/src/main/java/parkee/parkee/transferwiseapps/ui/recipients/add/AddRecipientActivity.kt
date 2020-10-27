@@ -13,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
 import parkee.parkee.transferwiseapps.ui.LoadingDialog
 import parkee.parkee.transferwiseapps.ui.currency.ChooseCurrencyDialog
+import parkee.parkee.transferwiseapps.ui.recipients.add.adapter.DynamicFieldAdapter
 import parkee.parkee.transferwiseapps.uiModel.RecipientBankDetailsModel
 
 class AddRecipientActivity : AppCompatActivity() {

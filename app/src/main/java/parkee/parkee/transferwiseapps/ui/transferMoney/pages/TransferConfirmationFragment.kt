@@ -1,4 +1,4 @@
-package parkee.parkee.transferwiseapps.ui.transferMoney
+package parkee.parkee.transferwiseapps.ui.transferMoney.pages
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import parkee.parkee.transferwiseapps.R
+import parkee.parkee.transferwiseapps.ui.transferMoney.TransferMoneyViewModel
 
 class TransferConfirmationFragment : Fragment() {
 

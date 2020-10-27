@@ -1,4 +1,4 @@
-package parkee.parkee.transferwiseapps.ui.recipients.add
+package parkee.parkee.transferwiseapps.ui.recipients.add.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

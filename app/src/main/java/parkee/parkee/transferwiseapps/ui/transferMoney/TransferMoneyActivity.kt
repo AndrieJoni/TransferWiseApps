@@ -8,6 +8,10 @@ import kotlinx.android.synthetic.main.activity_transfer_money.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
 import parkee.parkee.transferwiseapps.ui.LoadingDialog
+import parkee.parkee.transferwiseapps.ui.transferMoney.pages.ChooseAndConvertCurrencyFragment
+import parkee.parkee.transferwiseapps.ui.transferMoney.pages.ChooseRecipientFragment
+import parkee.parkee.transferwiseapps.ui.transferMoney.pages.ChooseTransferReasonFragment
+import parkee.parkee.transferwiseapps.ui.transferMoney.pages.TransferConfirmationFragment
 
 class TransferMoneyActivity : AppCompatActivity() {
 

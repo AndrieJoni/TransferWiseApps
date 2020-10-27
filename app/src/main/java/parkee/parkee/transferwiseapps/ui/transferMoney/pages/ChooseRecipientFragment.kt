@@ -1,4 +1,4 @@
-package parkee.parkee.transferwiseapps.ui.transferMoney
+package parkee.parkee.transferwiseapps.ui.transferMoney.pages
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.fragment_choose_recipient_for_transfer.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import parkee.parkee.transferwiseapps.R
 import parkee.parkee.transferwiseapps.ui.recipients.RecipientAdapter
+import parkee.parkee.transferwiseapps.ui.transferMoney.TransferMoneyViewModel
 
 class ChooseRecipientFragment : Fragment() {
 
