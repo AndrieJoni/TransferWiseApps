@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_white"
-        app:title="Detail Transfer"
+        app:title="@string/title_detail_transfer"
         app:titleTextColor="@color/white" />
 
     <TextView
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base16"
         android:paddingHorizontal="@dimen/base16"
-        android:text="Fee"
+        android:text="@string/fee"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base16"
         android:paddingHorizontal="@dimen/base16"
-        android:text="Exchange Rate"
+        android:text="@string/exchange_rate"
         android:textColor="@color/black"
         android:textSize="16sp" />
 

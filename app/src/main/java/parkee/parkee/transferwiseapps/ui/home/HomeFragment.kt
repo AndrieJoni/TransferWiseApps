@@ -38,7 +38,7 @@ class HomeFragment : Fragment(), TransferAdapter.OnTransferAdapterListener {
     override fun onTransferClicked(transferMoneyModel: TransferMoneyModel) {
 
         val intent = Intent(requireActivity(), DetailTransferActivity::class.java)
-        intent.putExtra(DetailTransferActivity.TRANSFER_MONEY_DATA,transferMoneyModel)
+        intent.putExtra(DetailTransferActivity.TRANSFER_MONEY_DATA, transferMoneyModel)
 
         startActivity(intent)
     }
@@ -84,7 +84,7 @@ class HomeFragment : Fragment(), TransferAdapter.OnTransferAdapterListener {
         })
 
         homeViewModel.showTransferList.observe(viewLifecycleOwner, {
-            rvTransferList.adapter = TransferAdapter(it,this)
+            rvTransferList.adapter = TransferAdapter(it, this)
         })
     }
 }

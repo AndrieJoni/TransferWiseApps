@@ -13,12 +13,12 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="International" />
+            android:text="@string/international" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Same Currency" />
+            android:text="@string/same_currency" />
 
     </com.google.android.material.tabs.TabLayout>
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.35"
-            android:hint="You Send">
+            android:hint="@string/you_send">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextSourceAmount"
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.65"
-            android:hint="Currency">
+            android:hint="@string/currency">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextSourceCurrency"
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.35"
-            android:hint="Recipient Gets">
+            android:hint="@string/recipient_gets">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextTargetAmount"
@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.65"
-            android:hint="Currency">
+            android:hint="@string/currency">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextTargetCurrency"
@@ -122,6 +122,6 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:layout_margin="16dp"
-        android:text="Continue" />
+        android:text="@string/text_continue" />
 
 </LinearLayout>

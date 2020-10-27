@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/ic_tw_horizontal_white_rgb" />
+        app:logo="@drawable/ic_tw_horizontal_white_rgb"
+        app:menu="@menu/menu_app_bar_main"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerMain"
@@ -32,6 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/menu_main" />
+        app:menu="@menu/menu_bottom_nav_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

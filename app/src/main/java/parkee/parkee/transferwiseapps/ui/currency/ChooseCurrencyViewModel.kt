@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import parkee.parkee.transferwiseapps.domain.mapToListCurrencyModel
 import parkee.parkee.transferwiseapps.data.network.borderlessAccount.CurrencyDto
 import parkee.parkee.transferwiseapps.data.repository.BorderlessAccountsRepository
+import parkee.parkee.transferwiseapps.domain.mapToListCurrencyModel
 import parkee.parkee.transferwiseapps.uiModel.CurrencyModel
 import parkee.parkee.transferwiseapps.utils.SingleLiveEvent
 

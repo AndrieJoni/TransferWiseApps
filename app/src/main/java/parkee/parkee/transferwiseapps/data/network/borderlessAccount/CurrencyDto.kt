@@ -1,4 +1,5 @@
 package parkee.parkee.transferwiseapps.data.network.borderlessAccount
+
 import com.google.gson.annotations.SerializedName
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -28,7 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/base16"
-                android:text="Welcome Back."
+                android:text="@string/welcome_back"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="24sp"
@@ -39,13 +40,31 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New to TransferWise? Sign up"
+                android:text="@string/new_to_transferwise"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base4"
+                android:text="@string/sign_up"
+                android:textAlignment="center"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView2" />
+
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
@@ -64,60 +83,71 @@
                 app:layout_constraintTop_toBottomOf="@id/guideline">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutEmail"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/base16"
                     android:layout_marginVertical="@dimen/base8"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextEmail"
                         android:layout_width="match_parent"
-                        android:layout_height="62dp" />
+                        android:layout_height="62dp"
+                        android:imeOptions="actionNext" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutPassword"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/base16"
                     android:layout_marginVertical="@dimen/base8"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditTextPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="62dp" />
+                        android:layout_height="62dp"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    android:id="@+id/buttonLogin"
                     android:layout_width="match_parent"
                     android:layout_height="62dp"
                     android:layout_marginHorizontal="@dimen/base16"
                     android:layout_marginVertical="@dimen/base8"
-                    android:text="Log In" />
+                    android:enabled="false"
+                    android:text="@string/log_in" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/base16"
                     android:layout_marginVertical="@dimen/base8"
-                    android:text="Forgot your password?"
-                    android:textAlignment="textEnd" />
+                    android:text="@string/forgot_your_password"
+                    android:textAlignment="textEnd"
+                    android:textColor="?attr/colorPrimary"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/base16"
                     android:layout_marginVertical="@dimen/base8"
-                    android:text="Or log in with" />
+                    android:text="@string/or_log_in_with" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -157,15 +187,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/base16"
                     android:layout_marginVertical="@dimen/base8"
-                    android:text="Remeber this device" />
+                    android:text="@string/remember_this_device" />
 
                 <TextView
+                    android:id="@+id/textViewTermsAndCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/base16"
                     android:layout_marginVertical="@dimen/base8"
                     android:lineSpacingMultiplier="1.5"
-                    android:text="By continuing you accept our Terms of use and Privacy Policy" />
+                    tools:text="By continuing you accept our Terms of use and Privacy Policy" />
 
             </LinearLayout>
 

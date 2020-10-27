@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_white"
-        app:title="Add your bank account"
+        app:title="@string/title_add_bank_account"
         app:titleTextColor="@color/white" />
 
     <androidx.core.widget.NestedScrollView
@@ -25,13 +25,13 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:id="@+id/textInputLayoutTextCurrency"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/base16"
                 android:layout_marginTop="@dimen/base16"
-                android:hint="Currency">
+                android:hint="@string/currency">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditTextCurrency"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Select Recipient Type" />
+                android:text="@string/select_recipient_type" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:hint="First name of the account holder">
+                android:hint="@string/first_name_of_the_account_holder">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditTextFirstName"
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:hint="Last name of the account holder">
+                android:hint="@string/last_name_of_the_account_holder">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditTextLastName"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Recipients Bank Details" />
+                android:text="@string/recipients_bank_details" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 android:layout_margin="16dp"
-                android:text="Add" />
+                android:text="@string/add" />
 
         </LinearLayout>
 

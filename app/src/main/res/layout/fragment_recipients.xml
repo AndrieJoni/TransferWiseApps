@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Add Recipients" />
+        android:text="@string/add_recipients" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Recipients"
+        android:text="@string/recipients"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />

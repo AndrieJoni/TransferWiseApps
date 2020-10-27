@@ -10,8 +10,8 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_add_recipients.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R
-import parkee.parkee.transferwiseapps.uiModel.RecipientBankDetailsModel
 import parkee.parkee.transferwiseapps.ui.currency.ChooseCurrencyDialog
+import parkee.parkee.transferwiseapps.uiModel.RecipientBankDetailsModel
 
 class AddRecipientActivity : AppCompatActivity() {
 
@@ -134,21 +134,21 @@ class AddRecipientActivity : AppCompatActivity() {
 
             textInputLayoutTextCurrency.isErrorEnabled = it
 
-            if (it) textInputLayoutTextCurrency.error = "choose currency"
+            if (it) textInputLayoutTextCurrency.error = getString(R.string.error_choose_currency)
         })
 
         addRecipientViewModel.firstNameErrorEvent.observe(this, {
 
             textInputLayoutTextFirstName.isErrorEnabled = it
 
-            if (it) textInputLayoutTextFirstName.error = "must be filled"
+            if (it) textInputLayoutTextFirstName.error = getString(R.string.error_must_be_filled)
         })
 
         addRecipientViewModel.lastNameErrorEvent.observe(this, {
 
             textInputLayoutTextLastName.isErrorEnabled = false
 
-            if (it) textInputLayoutTextLastName.error = "must be filled"
+            if (it) textInputLayoutTextLastName.error = getString(R.string.error_must_be_filled)
         })
 
         addRecipientViewModel.clearErrorEvent.observe(this, Observer {

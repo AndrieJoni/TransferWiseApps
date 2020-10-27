@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:navigationIcon="@drawable/ic_baseline_clear"
-        app:title="Choose Currency"
+        app:title="@string/choose_currency"
         app:titleTextColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView

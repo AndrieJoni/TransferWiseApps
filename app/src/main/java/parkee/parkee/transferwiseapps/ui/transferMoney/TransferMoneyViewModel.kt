@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import parkee.parkee.transferwiseapps.domain.mapToRecipientModel
 import parkee.parkee.transferwiseapps.data.network.borderlessAccount.AccountBalanceDto
 import parkee.parkee.transferwiseapps.data.network.quote.CreateQuoteResponseDto
 import parkee.parkee.transferwiseapps.data.network.recipient.RecipientDto
@@ -14,6 +13,7 @@ import parkee.parkee.transferwiseapps.data.network.transfer.CreateFundResponseDt
 import parkee.parkee.transferwiseapps.data.network.transfer.CreateTransferResponseDto
 import parkee.parkee.transferwiseapps.data.network.userProfiles.UserProfilesPersonalDto
 import parkee.parkee.transferwiseapps.data.repository.*
+import parkee.parkee.transferwiseapps.domain.mapToRecipientModel
 import parkee.parkee.transferwiseapps.uiModel.CurrencyModel
 import parkee.parkee.transferwiseapps.uiModel.RecipientModel
 import parkee.parkee.transferwiseapps.uiModel.TransferConfirmationModel

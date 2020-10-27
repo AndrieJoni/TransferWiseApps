@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAccountBalance"
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Your Transfer"
+        android:text="@string/your_transfer"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />

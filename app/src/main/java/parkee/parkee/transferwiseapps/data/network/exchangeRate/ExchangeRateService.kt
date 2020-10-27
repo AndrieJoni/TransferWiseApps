@@ -9,5 +9,5 @@ interface ExchangeRateService {
     suspend fun getExchangeRates(
         @Query("source") source: String,
         @Query("target") target: String,
-    ) : List<ExchangeRateDto>
+    ): List<ExchangeRateDto>
 }

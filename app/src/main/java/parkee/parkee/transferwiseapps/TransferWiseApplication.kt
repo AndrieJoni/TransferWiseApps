@@ -15,7 +15,7 @@ class TransferWiseApplication : MultiDexApplication() {
             androidContext(this@TransferWiseApplication)
 
             ///CoreModule
-            modules(networkModule)
+            modules(sessionModule, networkModule)
 
             modules(
                 userModule,
@@ -23,6 +23,8 @@ class TransferWiseApplication : MultiDexApplication() {
                 quoteModule,
                 transferMoneyModule,
                 exchangeRateModule,
+                loginModule,
+                verificationOtpModule,
                 homeModule,
                 detailTransferModule,
                 recipientsModules,

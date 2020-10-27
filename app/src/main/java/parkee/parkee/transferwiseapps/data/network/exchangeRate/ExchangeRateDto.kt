@@ -1,4 +1,5 @@
 package parkee.parkee.transferwiseapps.data.network.exchangeRate
+
 import com.google.gson.annotations.SerializedName
 
 data class ExchangeRateDto(

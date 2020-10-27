@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Review details of your transfer"
+            android:text="@string/review_details_of_your_transfer"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Transfer Details"
+            android:text="@string/transfer_details"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                android:text="You send" />
+                android:text="@string/you_send" />
 
             <TextView
                 android:id="@+id/textViewYouSendValue"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                android:text="Total fees (included)" />
+                android:text="@string/total_fees_included" />
 
             <TextView
                 android:id="@+id/textViewTotalFeeValue"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                android:text="Amount we'll convert" />
+                android:text="@string/amount_we_ll_convert" />
 
             <TextView
                 android:id="@+id/textViewMoneyConvertValue"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                android:text="Guarantee Rate" />
+                android:text="@string/guarantee_rate" />
 
             <TextView
                 android:id="@+id/textViewGuaranteeRateValue"
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                android:text="Recipient get" />
+                android:text="@string/recipient_get" />
 
             <TextView
                 android:id="@+id/textViewRecipientGetValue"
@@ -162,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Should Arrive" />
+                android:text="@string/should_arrive" />
 
             <TextView
                 android:id="@+id/textViewShouldArriveValue"
@@ -179,7 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Recipient Details"
+            android:text="@string/recipient_details"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0"
-                android:text="Name" />
+                android:text="@string/name" />
 
             <TextView
                 android:id="@+id/textViewRecipientNameValue"
@@ -212,7 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:layout_margin="16dp"
-            android:text="Continue" />
+            android:text="@string/text_continue" />
 
     </LinearLayout>
 

@@ -2,7 +2,6 @@ package parkee.parkee.transferwiseapps.ui.transferMoney
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_transfer_money.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import parkee.parkee.transferwiseapps.R

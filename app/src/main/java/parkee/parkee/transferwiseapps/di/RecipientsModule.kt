@@ -4,8 +4,8 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import parkee.parkee.transferwiseapps.data.network.recipient.RecipientService
 import parkee.parkee.transferwiseapps.data.repository.RecipientRepository
-import parkee.parkee.transferwiseapps.ui.recipients.add.AddRecipientViewModel
 import parkee.parkee.transferwiseapps.ui.recipients.RecipientsViewModel
+import parkee.parkee.transferwiseapps.ui.recipients.add.AddRecipientViewModel
 import retrofit2.Retrofit
 
 val recipientsModules = module {
@@ -17,10 +17,10 @@ val recipientsModules = module {
     }
 
     viewModel {
-        RecipientsViewModel(get(),)
+        RecipientsViewModel(get())
     }
 
     viewModel {
-        AddRecipientViewModel(get(), get(),get())
+        AddRecipientViewModel(get(), get(), get())
     }
 }

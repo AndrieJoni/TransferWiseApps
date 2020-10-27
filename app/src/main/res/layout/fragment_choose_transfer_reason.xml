@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="What's the reason for your transfer?"
+        android:text="@string/what_s_the_reason_for_your_transfer"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:text="Transfer Reason" />
+        android:text="@string/transfer_reason" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -41,6 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:layout_margin="16dp"
-        android:text="Continue" />
+        android:text="@string/text_continue" />
 
 </LinearLayout>

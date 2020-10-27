@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import parkee.parkee.transferwiseapps.R
+import parkee.parkee.transferwiseapps.session.SessionManager
 import parkee.parkee.transferwiseapps.ui.home.HomeFragment
+import parkee.parkee.transferwiseapps.ui.login.LoginActivity
 import parkee.parkee.transferwiseapps.ui.recipients.RecipientsFragment
 import parkee.parkee.transferwiseapps.ui.transferMoney.TransferMoneyActivity
 
@@ -62,5 +64,12 @@ class MainActivity : AppCompatActivity() {
     private fun onClickListener() {
 
         bottomNavMain.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        toolbarMain.menu.findItem(R.id.menu_logout).setOnMenuItemClickListener {
+            SessionManager(this).isLogin = false
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            true
+        }
     }
 }

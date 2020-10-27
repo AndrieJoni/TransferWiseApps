@@ -52,14 +52,14 @@ class ChooseAndConvertCurrencyFragment : Fragment() {
 
             textInputLayoutTextSourceCurrency.isErrorEnabled = it
 
-            if (it) textInputLayoutTextSourceCurrency.error = "Must be filled"
+            if (it) textInputLayoutTextSourceCurrency.error = getString(R.string.error_must_be_filled)
         })
 
         transferMoneyViewModel.targetCurrencyErrorEvent.observe(viewLifecycleOwner, {
 
             textInputLayoutTextTargetCurrency.isErrorEnabled = it
 
-            if (it) textInputLayoutTextTargetCurrency.error = "Must be filled"
+            if (it) textInputLayoutTextTargetCurrency.error = getString(R.string.error_must_be_filled)
 
         })
 
@@ -67,7 +67,7 @@ class ChooseAndConvertCurrencyFragment : Fragment() {
 
             textInputLayoutTextSourceAmount.isErrorEnabled = it
 
-            if (it) textInputLayoutTextSourceAmount.error = "Must be filled"
+            if (it) textInputLayoutTextSourceAmount.error = getString(R.string.error_must_be_filled)
         })
 
         transferMoneyViewModel.setTargetCurrency.observe(viewLifecycleOwner, {

@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.dialog_choose_currency.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import parkee.parkee.transferwiseapps.R
-import parkee.parkee.transferwiseapps.uiModel.CurrencyModel
 import parkee.parkee.transferwiseapps.ui.FullScreenDialog
+import parkee.parkee.transferwiseapps.uiModel.CurrencyModel
 
 class ChooseCurrencyDialog : FullScreenDialog() {
 

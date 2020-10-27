@@ -3,7 +3,7 @@ package parkee.parkee.transferwiseapps.domain
 import parkee.parkee.transferwiseapps.data.network.transfer.CreateTransferResponseDto
 import parkee.parkee.transferwiseapps.uiModel.TransferMoneyModel
 
-fun Collection<CreateTransferResponseDto>.mapToTransferMoneyModel() : List<TransferMoneyModel> {
+fun Collection<CreateTransferResponseDto>.mapToTransferMoneyModel(): List<TransferMoneyModel> {
 
     return map {
         TransferMoneyModel(
